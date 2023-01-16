@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+/* reset file for css */
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* border: 1px solid white; */
+  transition: 0.5s ease-in-out;
+}
+
+body {
+     box-sizing: border-box;
+     font-size: 16px;
+     background-color: #FDF6ED;
+}
+
+*, *:before, *:after {
+     box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, a {
+     margin: 0;
+     padding: 0;
+     font-weight: normal;
+     font-family: "Montserrat", sans-serif;
+     color: #FDF6ED !important;
+}
+
+
+h1{
+     font-size: 2.5rem;
+     font-weight: 600;
+     line-height: 1.2;
+     font-family: "Playfair Display", serif;
+}
+h2{
+     font-size: 2rem;
+     font-weight: 600;
+     line-height: 1.2;
+     font-family: "Playfair Display", serif;
+
+}
+h3{
+     font-size: 1.5rem;
+     font-weight: 600;
+     line-height: 1.2;
+     font-family: "Playfair Display", serif;
+
+}
+h4{
+     font-size: 1rem;
+     font-weight: 600;
+     line-height: 1.2;
+     font-family: "Playfair Display", serif;
+
+}
+h5{
+     font-size: 0.75rem;
+     font-weight: 600;
+     line-height: 1.2;
+}
+h6{
+     font-size: 0.5rem;
+     font-weight: 600;
+     line-height: 1.2;
+}
+p{
+     font-size: 0.rem;
+     font-weight: 400;
+     line-height: 1.5;
+}
+
+
+
+ol, ul {
+     list-style: none;
+}
+
+img {
+     max-width: 100%;
+     height: auto;
+}
+
+@media (max-width: 768px) {
+     h1{
+          font-size: 3rem;
+     }
+     h2{
+          font-size: 2rem;
+     
+     }
+     h3{
+          font-size: 1.75rem;
+     
+     }
+     h4{
+          font-size: 1.5rem;
+     
+     }
+     h5{
+          font-size: 1.25rem;
+     }
+     h6{
+          font-size: 1rem;
+     }
+     p{
+          font-size: 0.8rem;
+     }
+}
+
+
+/* Layout  */
+#content-container,#App, #root{
+     height: 100vh;
+}
+#content-container{
+     display: flex;
+     flex-direction: column;
+}
+#content{
+     height: 100%;
+}
+
+/* variables */
+:root{
+     --primary-color: #EA2B2B;
+     --neutral-color-dark: #707070;
+     --neutral-color-light:#C6CCD3;
+     --color-dark: #000;
+     --color-light: #fff
+
+}
