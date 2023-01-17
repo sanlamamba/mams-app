@@ -1,12 +1,15 @@
 import React from "react";
+import api from "../../apiConfig/requests";
+import client from "../../apiConfig/api";
+import { toast } from "react-toastify";
 
 export default function ContactForm() {
   const [value, setValue] = React.useState({
+    sujet: "",
+    message: "",
     nom: "",
     prenom: "",
     mail: "",
-    sujet: "",
-    message: "",
   });
 
   const handleChange = (event) => {
@@ -16,17 +19,26 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
-    formData.append("name", value.nom);
-    formData.append("prenom", value.prenom);
-    formData.append("email", value.mail);
-    formData.append("mail", value.mail);
-    formData.append("sujet", value.sujet);
-    formData.append("message", value.message);
-
-    console.log(formData);
+    console.log(value);
+    try {
+      const res = await client.post("/message/new", value);
+      console.log(res);
+      if (res.ok) {
+        toast.success(res.message);
+        setValue({
+          nom: "",
+          sujet: "",
+          message: "",
+          prenom: "",
+          mail: "",
+        });
+      }
+    } catch (e) {
+      console.log(e);
+      toast.error(e.message);
+    }
   };
 
   return (

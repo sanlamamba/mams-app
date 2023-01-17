@@ -7,6 +7,9 @@ body{
   background-color: black;
 
 }
+.navbar{
+  z-index: 15;
+}
 body:before, body:after {
   content: " ";
   position: absolute;
@@ -209,10 +212,114 @@ input, textarea{
 .projet__container{
   position: relative;
 }
+.galerie-lightbox-nav{
+  width: 130%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+}
 
+.galerie-lightbox-close{
+  position: absolute;
+  margin-top: -25px;
+  right: -7.5%;
+  top: 0
+
+}
+.galerie-lightbox{
+  display: none !important;
+}
+.galerie-lightbox.active{
+  display: flex !important;
+}
+.galerie-lightbox-nav button, .galerie-lightbox-close button{
+  background-color: transparent;
+  border: none;
+  color: var(--primary-color);
+  
+}
+.galerie-lightbox-nav button:hover, .galerie-lightbox-close button:hover{
+  transform: scale(1.2);
+  transition: 0.1s ease-in;
+}
 .projet__disc{
   position: absolute;
   width: 25vw;
   top: -17.5%;
   right: -10px;
+}
+.galerie_grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+ overflow: scroll;
+  max-height: 90vh;
+  padding-bottom: 2.5vh;
+}
+.galerie_img{
+ padding: 5px;
+ position: relative;
+ opacity: 0.5;
+}
+.lightbox-img{
+  opacity: 1;
+  cursor: auto;
+}
+.galerie_img:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+.galerie_img .top, .galerie_img .bottom {
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  pointer-events: none;
+  border-color: var(--primary-color) !important;
+}
+
+.galerie_img .top {
+  top: 0;
+  border-top: 1px solid;
+}
+
+.galerie_img .bottom {
+  bottom: 0;
+  border-bottom: 1px solid;
+}
+
+.galerie_img .left {
+  left: 0;
+  border-left: 1px solid;
+}
+
+.galerie_img .right {
+  right: 0;
+  border-right: 1px solid;
+}
+.galerie-lightbox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000aa;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox-content{
+  transform: scale(1.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.background-main{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
 }

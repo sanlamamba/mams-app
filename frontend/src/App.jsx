@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import UserLayout from "./layout/UserLayout";
 import Projet from "./pages/UserPage/Projet";
 import Contact from "./pages/UserPage/Contact";
+import Galerie from "./pages/UserPage/Galerie";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,12 +18,30 @@ function App() {
   return (
     <div id="App">
       <Routes>
-        <Route path="*" element={<UserLayout>HEllo</UserLayout>} />
+        <Route
+          path="*"
+          element={
+            <UserLayout>
+              <img
+                src="/assets/images/background-main.jpg"
+                className="background-main"
+              />
+            </UserLayout>
+          }
+        />
         <Route
           path="/projet"
           element={
             <UserLayout>
               <Projet />
+            </UserLayout>
+          }
+        />
+        <Route
+          path="/galerie"
+          element={
+            <UserLayout>
+              <Galerie />
             </UserLayout>
           }
         />
