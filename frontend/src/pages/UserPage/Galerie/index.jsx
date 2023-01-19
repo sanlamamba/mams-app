@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Lightbox from "../../../components/general/Lightbox";
 
 export default function Index() {
   const [lightbox, setLightbox] = useState({
@@ -36,7 +37,14 @@ export default function Index() {
   console.log(lightbox);
 
   return (
-    <div className="container-fluid contact_container">
+    <div className="container-fluid contact_container pb-5">
+      <Lightbox
+        lightbox={lightbox}
+        lightBoxToggle={lightBoxToggle}
+        lightboxNext={lightboxNext}
+        lightboxPrev={lightboxPrev}
+        content={{ type: "image", src: objects[lightbox.current] }}
+      />
       <div className={`galerie-lightbox ${lightbox.open ? "active" : ""}`}>
         <div className="galerie-lightbox_container">
           <div className="lightbox-content">

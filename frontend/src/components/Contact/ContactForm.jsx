@@ -43,8 +43,8 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className="row mt-5">
-        <div className="col-6 input__container">
+      <div className="row mt-md-5 mt-0 p-md-0 p-3 contact__form">
+        <div className="col-md-6  col-12 input__container text-white">
           <input
             type="text"
             name="nom"
@@ -53,7 +53,7 @@ export default function ContactForm() {
             onChange={handleChange}
           />
         </div>
-        <div className="col-6 input__container">
+        <div className="col-md-6 col-12 input__container">
           <input
             type="text"
             name="prenom"
@@ -62,7 +62,7 @@ export default function ContactForm() {
             onChange={handleChange}
           />
         </div>
-        <div className="col-6 input__container">
+        <div className="col-md-6 col-12 input__container">
           <input
             type="text"
             name="mail"
@@ -71,7 +71,7 @@ export default function ContactForm() {
             onChange={handleChange}
           />
         </div>
-        <div className="col-6 input__container">
+        <div className="col-md-6 col-12 input__container">
           <input
             type="text"
             name="sujet"
@@ -97,7 +97,11 @@ export default function ContactForm() {
           >
             <h4>Envoyer</h4>
 
-            <img src="/assets/images/btn-image.png" width={150} />
+            <img
+              src="/assets/images/btn-image.png"
+              width={150}
+              alt="mams button"
+            />
           </button>
         </div>
       </div>

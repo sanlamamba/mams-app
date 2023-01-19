@@ -7,9 +7,9 @@ export default function ProjetBox() {
 
   return (
     <div className="row projectbox__container p-4">
-      <div className="col-4 music__player_container px-3 ">
+      <div className="col-md-4 col-12 music__player_container px-3 ">
         <div className="row mb-2">
-          <div className="col-10">
+          <div className="col-md-10 col-12">
             <img
               src="/assets/images/album-cover.jpg"
               alt=""
@@ -19,7 +19,7 @@ export default function ProjetBox() {
             <h3>Baby Mama</h3>
             <h5 className="mt-1">Back Home</h5>
           </div>
-          <div className="col-2 d-flex flex-column justify-content-center align-items-center">
+          <div className="col-md-2 col-12 d-flex flex-md-column flex-row  justify-content-md-center justify-content-between  align-items-center">
             <button type="button" className="projet-btn mt-2">
               <i class="fas fa-download"></i>
             </button>
@@ -41,7 +41,7 @@ export default function ProjetBox() {
                 }}
               ></i>
             </button>
-            <h6 className="mt-3 projet__timing">2:03</h6>
+            <h6 className="mt-3 projet__timing d-none d-md-block">2:03</h6>
           </div>
         </div>
         <div className="row">
@@ -53,7 +53,7 @@ export default function ProjetBox() {
           </div>
         </div>
       </div>
-      <div className="col-8 music__list_container">
+      <div className="col-md-8 col-12 mt-3 music__list_container">
         {MusicList.map((music, index) => {
           return (
             <MusicSolo
@@ -72,9 +72,9 @@ function MusicSolo({ title, downloads, link }) {
   return (
     <div className="d-flex align-items-end">
       <button type="button" className="music_list_btn primary-btns">
-        <i class="fa fa-play" aria-hidden="true"></i>
+        <i class="fa fa-play text-white" aria-hidden="true"></i>
       </button>
-      <h6 className="music_list_title">{title}</h6>
+      <h6 className="music_list_title text-dark">{title}</h6>
       <p className="music_list_meta">
         {downloads}
         <i class="fa fa-download" aria-hidden="true"></i>

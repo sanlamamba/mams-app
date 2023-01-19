@@ -10,7 +10,7 @@
   margin: 0;
   box-sizing: border-box;
   /* border: 1px solid white; */
-  transition: 0.5s ease-in-out;
+  /* transition: 0.5s ease-in-out; */
 }
 
 body {
@@ -115,16 +115,14 @@ img {
 
 
 /* Layout  */
-#content-container,#App, #root{
-     height: 100vh;
-}
 #content-container{
-     display: flex;
-     flex-direction: column;
+     display: grid;
+     grid-template-rows: 100px 1fr;
+     height: 100vh;
+     overflow-x: hidden;
+     overflow-y: scroll;
 }
-#content{
-     height: 100%;
-}
+
 
 /* variables */
 :root{

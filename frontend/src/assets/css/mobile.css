@@ -1,0 +1,70 @@
+
+
+@media only screen and (min-width: 600px) {
+     .navbar-nav .nav-toggle{
+          display: none;
+     }
+}
+@media only screen and (max-width: 600px) {
+     .navbar{
+          width: 100vw;
+     }
+     .navbar-nav{
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 10;
+          background-color: #000000ca;
+          height: 100vh;
+          width: 100vw;
+          transform: translateX(100%);
+          transition: 0.5s;
+
+     }
+     .navbar-nav.toggled{
+          transform: translateX(0);
+     }
+     .nav-item{
+          margin-bottom: 10px
+     }
+     .nav-item.active{
+          border-bottom: 1px solid #fafafa90;
+     }
+     .navbar-nav img{
+          display: none ;
+     }
+     .navbar-nav .nav-toggle{
+          display: flex;
+          justify-content: end;
+          padding: 20px;
+     }
+     .input__container input, .input__container textarea{
+          width: 100%;
+          border-radius: 0;
+          text-align: start;
+     }
+     .input__container{
+          margin: 1em 0px;
+     }
+     .galerie_grid{
+          grid-template-columns: 1fr 1fr;
+     }
+     .lightbox-content{
+          transform: scale(0.8);
+     }
+     .projectbox__container{
+          margin: 0.2em;
+     }
+     .projectbox__container .projet_img{
+          margin: 0;
+          transform: scale(1);
+          margin-bottom: 0.2em;
+     }
+     .music__list_container{
+          padding: 0;
+          gap: 10px;
+     }
+     .lightbox-content iframe{
+          max-width: 99vw;
+     }
+   }

@@ -5,7 +5,7 @@ import UserLayout from "./layout/UserLayout";
 import Projet from "./pages/UserPage/Projet";
 import Contact from "./pages/UserPage/Contact";
 import Galerie from "./pages/UserPage/Galerie";
-
+import Clips from "./pages/UserPage/Clips";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,6 +25,7 @@ function App() {
               <img
                 src="/assets/images/background-main.jpg"
                 className="background-main"
+                alt="Mams background"
               />
             </UserLayout>
           }
@@ -45,6 +46,15 @@ function App() {
             </UserLayout>
           }
         />
+        <Route
+          path="/clips"
+          element={
+            <UserLayout>
+              <Clips />
+            </UserLayout>
+          }
+        />
+
         <Route
           path="/contact"
           element={
