@@ -33,7 +33,7 @@ function Lightbox({
               <span className="galerie-icon">X</span>
             </button>
           </div>
-          {content.type == "image" && (
+          {content.type === "image" && (
             <div className="galerie-lightbox-nav">
               <button
                 type="button"
@@ -64,7 +64,7 @@ function Lightbox({
               </div>
             ) : (
               <>
-                {content.type == "image" && (
+                {content.type === "image" && (
                   <>
                     <div class="top left"></div>
                     <div class="top right"></div>

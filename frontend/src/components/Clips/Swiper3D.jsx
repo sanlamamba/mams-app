@@ -9,6 +9,7 @@ import "swiper/components/pagination/pagination.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
 import clipList from "../../data/ClipList";
 import Lightbox from "../general/Lightbox";
+import { useEffect } from "react";
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
 
@@ -42,6 +43,10 @@ export default function SwiperCoverflow() {
       open: true,
     });
   };
+
+  useEffect(() => {
+    setClips(clipList);
+  }, []);
 
   return (
     <div className="App">

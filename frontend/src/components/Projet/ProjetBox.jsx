@@ -1,5 +1,4 @@
 import React from "react";
-import { DownloadOutlined, ShareAltOutlined } from "@ant-design/icons";
 import MusicList from "../../data/MusicList";
 
 export default function ProjetBox() {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Lightbox from "../../../components/general/Lightbox";
+import galerieList from "../../../data/GalerieList";
 
 export default function Index() {
   const [lightbox, setLightbox] = useState({
@@ -30,10 +31,7 @@ export default function Index() {
       open: !lightbox.open,
     });
   };
-  const objects = [];
-  for (let i = 0; i < 36; i++) {
-    objects.push("https://source.unsplash.com/random/420x240/?some");
-  }
+  const [galerie, setGalerie] = useState(galerieList);
   console.log(lightbox);
 
   return (
@@ -43,7 +41,7 @@ export default function Index() {
         lightBoxToggle={lightBoxToggle}
         lightboxNext={lightboxNext}
         lightboxPrev={lightboxPrev}
-        content={{ type: "image", src: objects[lightbox.current] }}
+        content={{ type: "image", src: galerie[lightbox.current] }}
       />
       <div className={`galerie-lightbox ${lightbox.open ? "active" : ""}`}>
         <div className="galerie-lightbox_container">
@@ -82,16 +80,16 @@ export default function Index() {
               <div class="top right"></div>
               <div class="bottom right"></div>
               <div class="bottom left"></div>
-              <img src={objects[lightbox.current]} />
+              <img src={galerie[lightbox.current]} alt="Mams Galerie" />
             </div>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-12 px-2 galerie_grid">
-          {objects.map(function (object, i) {
+          {galerie.map(function (image, i) {
             return (
-              <GalerieImg src={object} click={setLightboxCurrent} index={i} />
+              <GalerieImg src={image} click={setLightboxCurrent} index={i} />
             );
           })}
         </div>

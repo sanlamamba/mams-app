@@ -1,5 +1,4 @@
 import React from "react";
-import api from "../../apiConfig/requests";
 import client from "../../apiConfig/api";
 import { toast } from "react-toastify";
 
