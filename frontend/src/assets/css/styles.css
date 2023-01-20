@@ -247,11 +247,32 @@ input, textarea{
 }
 .projet__disc{
   position: absolute;
-  right: -10px;
-  max-height: 80vh;
   top: 0;
-  width: auto;
+  width: 40vw;
+  right: -20vw;
+
+
+
+    /* The animation part: */
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
 }
+.projet_container{
+  overflow: hidden;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  
+  }
+}
+
 .galerie_grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
