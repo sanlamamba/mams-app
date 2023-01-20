@@ -1,5 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
-import { call, put, takeEvery, takeLatest, select } from "redux-saga/effects";
+import { put, takeLatest, select } from "redux-saga/effects";
 import { setFollowed } from "../redux/features/follow/followSlice";
 function* grantPermission() {
   console.log("grantPermission");

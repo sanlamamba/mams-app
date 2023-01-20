@@ -1,5 +1,5 @@
 import { call } from "redux-saga/effects";
-import authSaga from "./authSaga";
+// import authSaga from "./authSaga";
 import followSaga from "./followSaga";
 
 function* rootSaga() {
