@@ -3,9 +3,13 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
-    name: {
+    nom: {
       type: String,
       required: true,
+      trim: true,
+    },
+    prenom: {
+      type: String,
       trim: true,
     },
     email: {
@@ -20,29 +24,6 @@ const userSchema = new Schema(
       min: 6,
       max: 64,
     },
-    picture: {
-      type: String,
-      default: "/avatar_default.jpg",
-    },
-    role: {
-      type: [String],
-      default: ["Subscriber"],
-      enum: ["Subscriber", "Instructor", "Admin"],
-    },
-    stripe_account_id: "",
-    strip_seller: {},
-    stripeSession: {},
-    course_progress: [
-      {
-        courseId: String,
-        lessons: [
-          {
-            lessonId: String,
-            completed: Boolean,
-          },
-        ],
-      },
-    ],
   },
   {
     timestamps: true,

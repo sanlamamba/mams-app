@@ -6,6 +6,10 @@ import Projet from "./pages/UserPage/Projet";
 import Contact from "./pages/UserPage/Contact";
 import Galerie from "./pages/UserPage/Galerie";
 import Clips from "./pages/UserPage/Clips";
+import Login from "./pages/Admin/Login";
+import AdminLayout from "./layout/AdminLayout";
+import GalerieList from "./pages/Admin/Galerie/GalerieList";
+import GalerieNew from "./pages/Admin/Galerie/GalerieNew";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -61,6 +65,31 @@ function App() {
             <UserLayout>
               <Contact />
             </UserLayout>
+          }
+        />
+        <Route path="/admin" element={<Login />} />
+        <Route
+          path="/admin/profile"
+          element={
+            <AdminLayout>
+              <h1>asdsadasd</h1>
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/galerie"
+          element={
+            <AdminLayout>
+              <GalerieList />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/admin/galerie/nouveau"
+          element={
+            <AdminLayout>
+              <GalerieNew />
+            </AdminLayout>
           }
         />
       </Routes>

@@ -88,7 +88,7 @@ export default function ContactForm() {
             rows={5}
           />
         </div>
-        <div className="col-12 contact__submit_container">
+        <div className="col-12 contact__submit_container d-flex justify-content-end">
           <button
             type="button"
             className="btn btn-contact"

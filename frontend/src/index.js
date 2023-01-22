@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/reset.css";
 import "./assets/css/styles.css";
 import "./assets/css/mobile.css";
+import "./assets/css/admin.css";
+import "antd/dist/antd.css";
 import "font-awesome/css/font-awesome.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

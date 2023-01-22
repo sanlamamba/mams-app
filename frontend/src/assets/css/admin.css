@@ -1,0 +1,99 @@
+.login__container{
+     height: 100vh;
+     width: 100vw;
+
+}
+.login__form_container{
+     padding: 2em;
+     background-color: #000000cf;
+     /* box-shadow: ; */
+     box-shadow: 0 0 20px 0 var(--primary-color);
+}
+.login__form_container .form-group{
+     margin: .5em 0;
+}
+.login__form_container .form-group input{
+     text-align: start;
+     padding: 0.5em;
+     border-radius: 0    ;
+     margin: 5px 0;
+     background-color: transparent;
+     border: none;
+     border-bottom: 2px solid white;
+     color: white;
+}
+.login__form_container .form-group button{
+     background-color: var(--primary-color);
+     padding: 0.5em 1.5em;
+     font-weight: 600;
+     border: none;
+
+ 
+}
+.login__form_hr{
+     border-top: 2px solid white;
+     width: 50%;
+}
+
+#admin-content{
+     height: 100vh;
+     width: 100vw;
+     display: grid;
+     grid-template-columns: 25vw 1fr;
+     gap: 20px;
+}
+.admin__container{
+     background-color: #000000cf;
+     border-radius: 10px;
+     padding: 2em 1em;
+     display: flex;
+}
+.galerie__container{
+     display: grid;
+     grid-template-rows: auto 1fr;
+     height: 100%;
+}
+
+.admin_galerie{
+     max-height: 80vh;
+     overflow: auto;
+}
+.image__new_container{
+     display: flex;
+     max-height: 80vh;
+     overflow: auto;
+     flex-wrap: wrap;
+     gap: 10px;
+     position: relative;
+     scroll-behavior: smooth;
+}
+.image__new_container .admin__image{
+     width: 24%
+}
+.image__new_container .admin__image > *{
+     width: 100%;
+     height: 100%;
+}
+.image__new_container img{
+     width: 100% ;
+     height: 100%;
+     object-fit: cover;
+}
+
+.imageUpload{
+     width: 24%;
+     cursor: pointer;
+
+}
+.imageUpload label{
+     width: 100%;
+     height: 100%;
+     background-color: #aa000020;
+     border: 1px solid var(--neutral-color-light);
+     cursor: pointer;
+
+}
+#ImageUpload{
+     position: absolute;
+     opacity: 0;
+}

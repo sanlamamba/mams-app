@@ -4,33 +4,35 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    if (!name || !email || !password) {
+    const { nom, prenom = "", email, password } = req.body;
+    if (!nom || !email || !password) {
       return res.status(400).json({
-        message: "Please provide all required fields",
+        message: "Veuillez remplir tout les champs requis",
       });
     }
     const userExists = await User.findOne({ email }).exec();
     if (userExists) {
       return res.status(400).json({
-        message: "User already exists",
+        message: "L'utilisateur existe deja",
       });
     }
 
     const hashedPassword = await hashPassword(password);
     const newUser = await User.create({
-      name,
+      nom,
+      prenom,
       email,
       password: hashedPassword,
     });
     res.status(201).json({
-      message: "User created successfully",
-      user: newUser,
+      message: "Utilisateur créé avec succès",
+      data: newUser,
     });
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "Error creating user, please try again",
+      message: "Error lors de la création de l'utilisateur",
+      error: err,
     });
   }
 };
@@ -40,13 +42,13 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({
-        message: "Please provide all required fields",
+        message: "Veuillez remplir tout les champs",
       });
     }
     const userExists = await User.findOne({ email }).exec();
     if (!userExists) {
       return res.status(400).json({
-        message: "User does not exist",
+        message: "L'utilisateur n'existe pas",
       });
     }
     const isPasswordValid = await comparePassword(
@@ -55,7 +57,7 @@ export const login = async (req, res) => {
     );
     if (!isPasswordValid) {
       return res.status(400).json({
-        message: "Invalid password",
+        message: "Mot de passe invalide",
       });
     }
     const token = jwt.sign(
@@ -70,14 +72,15 @@ export const login = async (req, res) => {
       httpOnly: true,
     });
     res.status(200).json({
-      message: "User logged in successfully",
-      user: userExists,
+      message: "Connexion réussie",
+      data: userExists,
       token,
     });
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "Error logging in user, please try again",
+      message: "Erreur lors de la connexion",
+      error: err,
     });
   }
 };
@@ -86,12 +89,13 @@ export const logout = async (req, res) => {
   try {
     res.clearCookie("token");
     return res.json({
-      message: "Logged out successfully",
+      message: "Deconnexion réussie",
     });
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "Error logging out user, please try again",
+      message: "Erreur lors de la deconnexion",
+      error: err,
     });
   }
 };
@@ -100,11 +104,14 @@ export const currentUser = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select("-password").exec();
     // console.log("current user", user);
-    return res.json(user);
+    return res.json({
+      message: "Liste des utilisateurs",
+      data: user,
+    });
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "Error getting current user, please try again",
+      message: "Error lors de la récupération de l'utilisateur",
     });
   }
 };

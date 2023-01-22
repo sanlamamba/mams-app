@@ -9,11 +9,18 @@ export default function UserLayout({ children }) {
 
   console.log(followed);
 
-  useEffect(() => {}, []);
+  const [isPermitted, setIsPermitted] = React.useState(followed);
+
+  useEffect(() => {
+    const localFollowed = localStorage.getItem("followed");
+    if (localFollowed) {
+      setIsPermitted(true);
+    }
+  }, []);
 
   return (
     <div className="container-fluid" id="content-container">
-      <Popup open={followed} />
+      <Popup open={isPermitted} />
       <div className="row">
         <MainNav />
       </div>
