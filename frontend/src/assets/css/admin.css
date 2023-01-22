@@ -97,3 +97,9 @@
      position: absolute;
      opacity: 0;
 }
+.admin__nav.active{
+     border-bottom: 1px solid var(--neutral-color-light);
+}
+.admin__nav_container{
+     border: 0;
+}

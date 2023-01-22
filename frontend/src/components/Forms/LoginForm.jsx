@@ -10,16 +10,18 @@ export default function LoginForm() {
   });
 
   const dispatch = useDispatch();
+  const emptyForm = () => {
+    setValues({
+      email: "",
+      password: "",
+    });
+  };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    setIsLoading(true);
-    try {
-      dispatch({ type: "LOGIN_REQUEST", payload: values });
-    } catch (err) {
-      console.log(err);
-    }
+    dispatch({ type: "LOGIN_REQUEST", payload: values });
+    // emptyForm();
   };
 
   const handleChange = (e) => {
