@@ -20,7 +20,7 @@ export default function UserLayout({ children }) {
 
   return (
     <div className="container-fluid" id="content-container">
-      <Popup open={isPermitted} />
+      {/* <Popup open={isPermitted} /> */}
       <div className="row">
         <MainNav />
       </div>

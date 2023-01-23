@@ -4,13 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function AdminNav() {
   const { nom, prenom, email } = useSelector((state) => state.auth);
-  console.log(nom);
   const location = useLocation();
-  console.log(location);
 
   const isActivePage = (pageArray) => {
-    console.log(location.pathname.split("/")[2]);
-
     if (pageArray.includes(location.pathname.split("/")[2])) {
       return "active";
     } else {
@@ -57,7 +53,7 @@ export default function AdminNav() {
               "messages"
             )}`}
           >
-            <Link to="/admin/messages" className="navbar-brand fs-6">
+            <Link to="/admin/message" className="navbar-brand fs-6">
               Messages
             </Link>
           </li>

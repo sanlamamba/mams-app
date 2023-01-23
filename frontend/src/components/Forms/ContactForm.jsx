@@ -25,7 +25,8 @@ export default function ContactForm() {
       const res = await client.post("/message/new", value);
       console.log(res);
       if (res.ok) {
-        toast.success(res.message);
+        toast.success("Message envoyé");
+
         setValue({
           nom: "",
           sujet: "",

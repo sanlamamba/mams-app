@@ -4,17 +4,37 @@ import slugify from "slugify";
 export const uploadImage = async (req, res, next) => {
   try {
     const image = req.file;
+    console.log(image);
 
-    const imageFile = new Image(req.body);
-
+    const imageFile = new Image({
+      path: image.filename,
+    });
+    await imageFile.save();
     res.status(200).json({
       message: "Image uploaded successfully",
-      path: `${image.filename}`,
+      data: imageFile,
     });
   } catch (err) {
     res.status(500).json({
       message: "Error uploading image",
       error: err,
+    });
+  }
+};
+
+export const getImages = async (req, res, next) => {
+  try {
+    const images = await Image.find();
+    images.sort((a, b) => b.createdAt - a.createdAt);
+    res.status(200).json({
+      message: "Images fetched successfully",
+      data: images,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Error fetching images",
+      error: err,
+      data: null,
     });
   }
 };

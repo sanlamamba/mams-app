@@ -4,8 +4,8 @@ import followSaga from "./followSaga";
 import authSaga from "./authSaga";
 
 function* rootSaga() {
+  // call auth and follow saga
   yield call(authSaga);
-  yield call(followSaga);
 }
 
 export default rootSaga;

@@ -5,30 +5,39 @@ import galerieList from "../../../data/GalerieList";
 import { useState } from "react";
 import { Image } from "antd";
 import client from "../../../apiConfig/api";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { assetsLocations } from "../../../utils/assetsLocations";
 
 export default function GalerieNew() {
   const [uploading, setUploading] = useState(false);
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
 
   const handleImageUpload = async (e) => {
     let file = e.target.files[0];
-    // setUploadButtonText(file.name);
-    // setValues({
-    //   ...values,
-    //   loading: true,
-    // });
+
     setUploading(true);
 
     const formData = new FormData();
     formData.append("image", file);
     formData.append("type", "images");
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `${token}`,
+      },
+    };
     try {
-      const apiCall = await client.post("/image/upload-image", formData);
+      const apiCall = await client.post(
+        "/image/upload-image",
+        formData,
+        config
+      );
+
       const { data } = apiCall;
       if (apiCall.ok) {
         console.log(data);
-
-        // setImage(data.path);
-        // toast.success(data.message);
       } else {
         // toast.error(data.message);
       }
@@ -37,20 +46,51 @@ export default function GalerieNew() {
     }
     setUploading(false);
   };
+  const [galerie, setGalerie] = useState([]);
 
+  const loadData = async () => {
+    try {
+      const apiCall = await client.get("/image");
+      const { data } = apiCall.data;
+      if (apiCall.ok) {
+        console.log(data);
+        setGalerie(data);
+      } else {
+        // toast.error(data.message);
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
+      // toast.error("Error loading data");
+      console.log(e);
+    }
+  };
+
+  console.log(galerie);
+  useEffect(() => {
+    loadData();
+  }, [uploading]);
   return (
     <div className="container">
-      <div className="row my-2 d-flex justify-content-end">
-        <Link to={"/admin/galerie/"} className="btn btn-outline-danger">
-          Voir la galerie
-        </Link>
-      </div>
       <div className="row">
         <div className="image__new_container">
-          {galerieList.map(function (image, i) {
-            return <ImageUploaded src={image} index={i} />;
+          {!uploading ? (
+            <ImageUploader uploadImage={handleImageUpload} />
+          ) : (
+            <div className="d-flex jusify-content-center align-items-center flex-column imageUpload">
+              <div class="spinner-grow text-danger" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
+          {galerie.map(function (image, i) {
+            return (
+              <ImageUploaded
+                src={`${assetsLocations.images}/${image.path}`}
+                index={i}
+              />
+            );
           })}
-          {!uploading && <ImageUploader uploadImage={handleImageUpload} />}
         </div>
       </div>
     </div>

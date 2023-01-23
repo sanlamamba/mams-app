@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "antd/dist/antd.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/reset.css";
 import "./assets/css/styles.css";
 import "./assets/css/mobile.css";
 import "./assets/css/admin.css";
-import "antd/dist/antd.css";
 import "font-awesome/css/font-awesome.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

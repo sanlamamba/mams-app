@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
+import { assetsLocations } from "../../utils/assetsLocations";
 
 function Lightbox({
   lightbox,
@@ -16,7 +17,7 @@ function Lightbox({
       setLoading(false);
     }, 1000);
   }, [content.src]);
-  console.log(content.src);
+
   return (
     <div
       className={`galerie-lightbox ${lightbox.open ? "active" : ""}`}
@@ -73,7 +74,10 @@ function Lightbox({
                   </>
                 )}
                 {content.type === "image" ? (
-                  <img src={content.src} alt="Mams lightbox" />
+                  <img
+                    src={`${assetsLocations.images}/${content.src}`}
+                    alt="Mams lightbox"
+                  />
                 ) : content.type === "video" ? (
                   <iframe
                     autoplay

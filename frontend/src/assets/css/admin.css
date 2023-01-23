@@ -46,7 +46,6 @@
      background-color: #000000cf;
      border-radius: 10px;
      padding: 2em 1em;
-     display: flex;
 }
 .galerie__container{
      display: grid;
@@ -102,4 +101,46 @@
 }
 .admin__nav_container{
      border: 0;
+}
+.imageUpload{
+     min-height: 175px;
+}
+.message__grid{
+     display: grid;
+     grid-template-columns: 1fr;
+     gap: 10px;
+     max-height: 85vh;
+     overflow-y: scroll;
+     padding-bottom: 50px;
+}
+.message__grid .message__box{
+     height: fit-content;
+     display: inline-block;
+     gap: 10px;
+     background-color: black;
+     border-radius: 5px;
+     border: 1px solid var(--neutral-color-dark);
+}
+.message__btn{
+     border: 1px solid var(--neutral-color-dark);
+     background-color: black;
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+}
+.message__btn:hover{
+     background-color: #fafafa20;
+}
+.message__box{
+     position: relative;
+}
+.message__btn_container{
+     position: absolute;
+     right: 10px;
+}
+.ant-modal-content p{
+     color: black !important;
+}
+.text-bg-warning{
+     background-color: var(--primary-color);
 }

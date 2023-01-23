@@ -15,10 +15,11 @@ const imageController = require("../controllers/image");
 
 router.post(
   `/${ENDPOINT}/upload-image`,
+  // requireToken,
   upload.single("image"),
   imageController.uploadImage
 );
-
+router.get(`/${ENDPOINT}/`, imageController.getImages);
 // router.post(
 //   `/${ENDPOINT}/remove-image`,
 //   imageRemover,

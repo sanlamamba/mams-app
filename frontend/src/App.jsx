@@ -8,8 +8,9 @@ import Galerie from "./pages/UserPage/Galerie";
 import Clips from "./pages/UserPage/Clips";
 import Login from "./pages/Admin/Login";
 import AdminLayout from "./layout/AdminLayout";
-import GalerieList from "./pages/Admin/Galerie/GalerieList";
 import GalerieNew from "./pages/Admin/Galerie/GalerieNew";
+import MessageList from "./pages/Admin/Message/MessageList";
+import { toast } from "react-toastify";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,9 +19,14 @@ function App() {
       dispatch({ type: "LOAD_LOGIN" });
     }
   }, [dispatch]);
-
+  // const alertme = () => {
+  //   toast("asdasdasdasd");
+  // };
   return (
     <div id="App">
+      {/* <button type="button" onClick={alertme}>
+        ADASDASD
+      </button> */}
       <Routes>
         <Route
           path="*"
@@ -76,19 +82,20 @@ function App() {
             </AdminLayout>
           }
         />
+
         <Route
-          path="/admin/galerie"
+          path="/admin/galerie/"
           element={
             <AdminLayout>
-              <GalerieList />
+              <GalerieNew />
             </AdminLayout>
           }
         />
         <Route
-          path="/admin/galerie/nouveau"
+          path="/admin/message/"
           element={
             <AdminLayout>
-              <GalerieNew />
+              <MessageList />
             </AdminLayout>
           }
         />

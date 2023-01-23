@@ -2,11 +2,11 @@ require("dotenv").config();
 import jwt from "jsonwebtoken";
 
 const requireToken = (req, res, next) => {
-  // console.log(req.body);
   const token =
     req.headers["x-access-token"] ||
     req.headers["authorization"] ||
-    req.body.token;
+    req.body.token ||
+    req.headers.authorization;
   if (token) {
     // decode with secret key
     const secret = process.env.JWT_SECRET;
