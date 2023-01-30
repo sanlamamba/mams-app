@@ -85,8 +85,12 @@ export const viewCourse = async (req, res, next) => {
 
 export const removeImage = async (req, res, next) => {
   try {
+    const imageId = req.params.id;
+    // console.log(`Removing ${imageId}`);
+    const deletedImage = await Image.findByIdAndDelete(imageId);
     res.status(200).json({
       message: "Image deleted successfully",
+      data: deletedImage,
     });
   } catch (e) {
     res.status(500).json({

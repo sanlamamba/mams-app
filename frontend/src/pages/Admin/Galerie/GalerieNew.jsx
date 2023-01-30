@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import galerieList from "../../../data/GalerieList";
 import { useState } from "react";
 import { Image } from "antd";
@@ -8,11 +8,26 @@ import client from "../../../apiConfig/api";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { assetsLocations } from "../../../utils/assetsLocations";
+import { toast } from "react-toastify";
 
 export default function GalerieNew() {
   const [uploading, setUploading] = useState(false);
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
+  const handleDelete = async (filename, id) => {
+    const data = {
+      image: filename,
+    };
+    try {
+      const apiCall = await client.delete(`/image/delete-image/${id}`, data);
+
+      if (apiCall.ok) {
+        toast.success(apiCall.data.message);
+        loadData();
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
+  };
 
   const handleImageUpload = async (e) => {
     let file = e.target.files[0];
@@ -39,10 +54,10 @@ export default function GalerieNew() {
       if (apiCall.ok) {
         console.log(data);
       } else {
-        // toast.error(data.message);
+        toast.error(data.message);
       }
     } catch (e) {
-      // toast.error("Error uploading image");
+      toast.error("Error uploading image");
     }
     setUploading(false);
   };
@@ -53,20 +68,16 @@ export default function GalerieNew() {
       const apiCall = await client.get("/image");
       const { data } = apiCall.data;
       if (apiCall.ok) {
-        console.log(data);
         setGalerie(data);
       } else {
-        // toast.error(data.message);
-        console.log(data);
+        toast.error(data.message);
       }
     } catch (e) {
-      console.log(e);
       // toast.error("Error loading data");
-      console.log(e);
     }
   };
+  // console.log(galerie);
 
-  console.log(galerie);
   useEffect(() => {
     loadData();
   }, [uploading]);
@@ -85,10 +96,25 @@ export default function GalerieNew() {
           )}
           {galerie.map(function (image, i) {
             return (
-              <ImageUploaded
-                src={`${assetsLocations.images}/${image.path}`}
-                index={i}
-              />
+              <div class="uploaded_image_container">
+                <img
+                  src={`${assetsLocations.images}/${image.path}`}
+                  alt=""
+                  srcset=""
+                />
+                <div className="uploaded_image_controls">
+                  <button
+                    className="admin__btn"
+                    onClick={() => handleDelete(image.path, image._id)}
+                  >
+                    <DeleteOutlined />
+                  </button>
+                </div>
+                {/* <ImageUploaded
+                  src={`${assetsLocations.images}/${image.path}`}
+                  index={i}
+                /> */}
+              </div>
             );
           })}
         </div>

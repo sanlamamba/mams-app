@@ -19,10 +19,7 @@ function Lightbox({
   }, [content.src]);
 
   return (
-    <div
-      className={`galerie-lightbox ${lightbox.open ? "active" : ""}`}
-      onClick={lightBoxToggle}
-    >
+    <div className={`galerie-lightbox ${lightbox.open ? "active" : ""}`}>
       <div className="galerie-lightbox_container">
         <div className="lightbox-content">
           <div className="galerie-lightbox-close">
@@ -42,7 +39,12 @@ function Lightbox({
                 onClick={lightboxPrev}
               >
                 <span className="galerie-icon">
-                  <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  <img
+                    src="/assets/images/arrow-left.png"
+                    alt=""
+                    srcset=""
+                    width={30}
+                  />
                 </span>
               </button>
               <button
@@ -51,7 +53,12 @@ function Lightbox({
                 onClick={lightboxNext}
               >
                 <span className="galerie-icon">
-                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                  <img
+                    src="/assets/images/arrow-right.png"
+                    alt=""
+                    srcset=""
+                    width={30}
+                  />
                 </span>
               </button>
             </div>

@@ -24,6 +24,10 @@ body:before, body:after {
   height: 100vh;
   width: 100vw;
 }
+body.black:before, body.black:after {
+  background-image: none;
+
+}
 #content{
   width: 100vw;
 }
@@ -40,11 +44,14 @@ body:before {
 
   backdrop-filter: blur(15px);
   color: var(--neutral-color-dark) !important;
+  padding-right: 5px !important;
 
 }
+
 .music__player_container h3,.music__player_container h5,.music__player_container h6{
   color: var(--neutral-color-dark) !important;
 }
+
 .music__progress_container{
   height: 0.2em;
   display: flex;
@@ -68,9 +75,25 @@ body:before {
   background-color: transparent;
   border: none;
   color: var(--neutral-color-light);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20px;
+  min-width: 20px;
 }
-.projet-btn:hover{
-  color: var(--primary-color);
+.projet-btn img{
+  position: absolute;
+  top: 0;
+}
+.projet-btn img:last-child{
+  opacity: 0;
+}
+.projet-btn:hover img:last-child{
+  opacity: 1;
+}
+.projet-btn.active img:last-child{
+  opacity: 1;
 }
 .projet-btn:first-child{
   color: var(--primary-color);
@@ -102,10 +125,14 @@ body:before {
 }
 
 .music__list_container{
+  padding-left: 1em;
+  gap: 2px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-left: 5em;
-  gap: 2px;
+  gap: 5px;
+}
+.music__list_container div{
+  margin-bottom: 10px;
 }
 .music_list_btn{
 
@@ -116,7 +143,7 @@ body:before {
 }
 
 .music_list_meta{
-  font-size: 7px;
+  font-size: 10px;
   color: var(--neutral-color-dark) !important;
 
 }
@@ -133,8 +160,8 @@ body:before {
 
 /* Contact */
 .input__container{
-  padding: 0px 5px;
-  margin: 1.5em 0px;
+  padding: 0px 10px 10px 0;
+  margin: 1.5em 0;
 }
 
 input, textarea{
@@ -145,22 +172,20 @@ input, textarea{
   text-align: center;
   width: 17.5em;
   color: white;
+  width: 100%;
+
 }
 .input__container textarea{
   resize: none;
   border: 1px solid var(--neutral-color-light);
-  width: 42.5em;
   text-align: start;
   padding: 10px 20px;
+  width: 100%;
 }
-.input__container:last-child{
-  margin-top:2.5em;
-  display: flex;
-}
+
 .contact__submit_container{
   display: flex;
   justify-content: end;
-  padding-right: 7.5em;
 }
 .btn-contact{
   position: relative;
@@ -180,21 +205,38 @@ input, textarea{
   z-index: 1;
   top: -5px;
   transform: scale(1.25);
+  opacity: 0;
+  transition: 0.2s ease-in;
 }
+.btn-contact:hover img{
+  opacity: 1;
+  
+}
+
 .btn-contact h4{
   position: absolute;
   z-index: 2;
 }
 .contact__img{
   position: relative;
-}
-.contact__img img{
-  position: absolute;
-  top: 0;
+  max-height: calc(100vh - 100px);
 }
 
+
 .contact_container{
+  height: calc(100vh - 100px);
   overflow: hidden;
+  max-height: calc(100vh - 100px);
+
+}
+.form__container{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+}
+.contact_container img{
+  height: 100%;
 }
 
 .nav-item{
@@ -251,11 +293,13 @@ input, textarea{
   width: 40vw;
   right: -20vw;
 
+  border-radius: 50%;
 
-
+}
+.projet__disc.spin{
     /* The animation part: */
     animation-name: spin;
-    animation-duration: 4000ms;
+    animation-duration: 5000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 
@@ -283,14 +327,27 @@ input, textarea{
  padding: 5px;
  position: relative;
  opacity: 0.5;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.plus_mark{
+  position: absolute;
+  z-index: 2;
 }
 .lightbox-img{
   opacity: 1;
   cursor: auto;
 }
-.galerie_img:hover{
+.galerie_img.hover{
   opacity: 1;
   cursor: pointer;
+}
+.galerie_img .plus_mark{
+  opacity: 0;
+}
+.galerie_img.hover .plus_mark{
+  opacity: 1;
 }
 .galerie_img .top, .galerie_img .bottom {
   position: absolute;
@@ -348,7 +405,6 @@ input, textarea{
 }
 
 .swiper-slide{
-  background-color: red;
   min-height: 75vh;
   position: relative;
   border-radius: 50px;
@@ -359,7 +415,6 @@ input, textarea{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue;
   height: 100%;
   width: 100%;
 }
@@ -376,8 +431,17 @@ input, textarea{
   display: none;
 }
 .swiper-slide.swiper-slide-active .swiper-button{
-  display: block;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-button-prev, .swiper-button-next{
+  color: var(--primary-color) !important;
+}
+.clip__img{
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
 }
 .swiper-button:hover{
   opacity: 1;
@@ -391,7 +455,7 @@ input, textarea{
   bottom: -7.5% !important;
 }
 .contact__form{
-  padding-bottom:100px
+  max-width: 720px;
 }
 .loader-container{
   min-width: 45vw;
@@ -419,6 +483,8 @@ input, textarea{
 .popup{
   background-color: black;
   box-shadow: 0 0 20px 0 var(--primary-color);
+  max-width: 75%;
+  text-align: center;
 }
 .popup__container .popup img{
   width: 100%;
@@ -432,6 +498,9 @@ input, textarea{
   justify-content: center;
   align-items: center;
   z-index: 0;
+}
+.popup__content *{
+  margin-bottom: 10px;
 }
 .popup_separator{
   position: absolute;
@@ -458,4 +527,7 @@ input, textarea{
   color: white;
   transform: scale(1.1);
   transition: 0.1s ease-in;
+}
+.music__solo{
+  height: fit-content;
 }

@@ -1,9 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 
-const imageRemover = async (req, res, next) => {
+const imageRemover = async (req, res, next, image) => {
+  console.log("I was here");
   console.log(req.body);
-  const path = "public/images/" + req.body.image;
+  const file = req.body.image || req.params.image || req.query.image || image;
+  console.log(file);
+  const path = "public/images/" + file;
   fs.unlink(path, (err) => {
     if (err) {
       return res.status(500).json({
@@ -11,14 +14,28 @@ const imageRemover = async (req, res, next) => {
         error: err,
       });
     }
-    res.status(200).json({
-      message: "Image deleted successfully",
-    });
+    next();
+  });
+};
+const musicRemover = async (req, res, next) => {
+  console.log(req);
+  const file = req.body.music || req.params.music || req.query.music;
+  const path = "public/music/" + file;
+  fs.unlink(path, (err) => {
+    if (err) {
+      return res.status(500).json({
+        message: "Error deleting music.",
+        error: err,
+      });
+    }
+    next();
   });
 };
 
-const videoRemover = async (req, res, next) => {
-  const path = "public/videos/" + req.body.video;
+const videoRemover = async (req, res, next, video) => {
+  console.log("I was here");
+  const file = req.body.video || req.params.video || req.query.video || video;
+  const path = "public/videos/" + file;
   fs.unlink(path, (err) => {
     if (err) {
       return res.status(500).json({
@@ -26,9 +43,7 @@ const videoRemover = async (req, res, next) => {
         error: err,
       });
     }
-    res.status(200).json({
-      message: "Video deleted successfully",
-    });
+    next();
   });
 };
 
@@ -41,9 +56,7 @@ const fileRemover = async (req, res, next) => {
         error: err,
       });
     }
-    res.status(200).json({
-      message: "File deleted successfully",
-    });
+    next();
   });
 };
 
@@ -51,6 +64,7 @@ const fileManager = {
   imageRemover,
   videoRemover,
   fileRemover,
+  musicRemover,
 };
 
 export default fileManager;

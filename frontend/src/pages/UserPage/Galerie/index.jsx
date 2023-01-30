@@ -4,6 +4,7 @@ import galerieList from "../../../data/GalerieList";
 import client from "../../../apiConfig/api";
 import { useEffect } from "react";
 import { assetsLocations } from "../../../utils/assetsLocations";
+import { useRef } from "react";
 
 export default function Index() {
   const [galerie, setGalerie] = useState([]);
@@ -30,16 +31,30 @@ export default function Index() {
     current: 0,
   });
   const lightboxNext = () => {
-    setLightbox({
-      open: true,
-      current: lightbox.current + 1,
-    });
+    if (lightbox.current + 1 < galerie.length) {
+      setLightbox({
+        open: true,
+        current: lightbox.current + 1,
+      });
+    } else {
+      setLightbox({
+        open: true,
+        current: 0,
+      });
+    }
   };
   const lightboxPrev = () => {
-    setLightbox({
-      open: true,
-      current: lightbox.current - 1,
-    });
+    if (lightbox.current - 1 > 0) {
+      setLightbox({
+        open: true,
+        current: lightbox.current - 1,
+      });
+    } else {
+      setLightbox({
+        open: true,
+        current: galerie.length - 1,
+      });
+    }
   };
   const lightBoxToggle = () => {
     setLightbox({
@@ -95,13 +110,29 @@ const GalerieImg = ({ src, alt = "", click, index }) => {
   const clicked = () => {
     click(index);
   };
+  const imgBox = useRef(null);
+  useEffect(() => {
+    imgBox.current.addEventListener("mouseenter", () => {
+      imgBox.current.classList.add("hover");
+    });
+
+    imgBox.current.addEventListener("mouseleave", () => {
+      imgBox.current.classList.remove("hover");
+    });
+  }, []);
+
   return (
-    <div className="galerie_img" onClick={clicked}>
+    <div className="galerie_img" onClick={clicked} ref={imgBox}>
       <div class="top left"></div>
       <div class="top right"></div>
       <div class="bottom right"></div>
       <div class="bottom left"></div>
       <img src={`${assetsLocations.images}/${src}`} alt={alt} />
+      <img
+        src={"/assets/images/plus-mark.png"}
+        className="plus_mark"
+        alt="plus-mark"
+      />
     </div>
   );
 };

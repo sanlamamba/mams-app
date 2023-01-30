@@ -1,10 +1,15 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-
+import client from "../../apiConfig/api";
+import { Badge } from "antd";
 export default function AdminNav() {
   const { nom, prenom, email } = useSelector((state) => state.auth);
   const location = useLocation();
+
+  const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
 
   const isActivePage = (pageArray) => {
     if (pageArray.includes(location.pathname.split("/")[2])) {
@@ -13,6 +18,18 @@ export default function AdminNav() {
       return "";
     }
   };
+  const getUnreadMessagesCount = async () => {
+    try {
+      const apiCall = await client.get("/message/unread/count");
+      if (apiCall.ok) {
+        const { data } = apiCall.data;
+        setUnreadMessagesCount(data);
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getUnreadMessagesCount();
+  }, [location.pathname]);
 
   return (
     <div className="admin__container d-flex flex-column">
@@ -55,6 +72,9 @@ export default function AdminNav() {
           >
             <Link to="/admin/message" className="navbar-brand fs-6">
               Messages
+              {unreadMessagesCount > 0 && (
+                <Badge count={unreadMessagesCount ? unreadMessagesCount : 0} />
+              )}
             </Link>
           </li>
         </ul>

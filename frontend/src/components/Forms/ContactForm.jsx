@@ -26,7 +26,6 @@ export default function ContactForm() {
       console.log(res);
       if (res.ok) {
         toast.success("Message envoyé");
-
         setValue({
           nom: "",
           sujet: "",
@@ -43,7 +42,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <div className="row mt-md-5 mt-0 p-md-0 p-3 contact__form">
+      <div className="row  p-md-0 p-3 contact__form">
         <div className="col-md-6  col-12 input__container text-white">
           <input
             type="text"
@@ -101,6 +100,10 @@ export default function ContactForm() {
               src="/assets/images/btn-image.png"
               width={150}
               alt="mams button"
+              style={{
+                objectFit: "cover",
+                height: "auto",
+              }}
             />
           </button>
         </div>

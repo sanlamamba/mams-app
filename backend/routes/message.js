@@ -9,4 +9,6 @@ router.post(`/${ENDPOINT}/new`, messageController.newMessage);
 
 router.get(`/${ENDPOINT}`, messageController.getMessages);
 router.put(`/${ENDPOINT}/read/:id`, messageController.setMessageReadByID);
+
+router.get(`/${ENDPOINT}/unread/count`, messageController.countUnreadMessages);
 module.exports = router;

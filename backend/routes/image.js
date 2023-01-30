@@ -20,11 +20,11 @@ router.post(
   imageController.uploadImage
 );
 router.get(`/${ENDPOINT}/`, imageController.getImages);
-// router.post(
-//   `/${ENDPOINT}/remove-image`,
-//   imageRemover,
-//   courseController.removeImage
-// );
+router.delete(
+  `/${ENDPOINT}/delete-image/:id`,
+  imageRemover,
+  imageController.removeImage
+);
 // router.post(
 //   `/${ENDPOINT}/upload-video`,
 //   upload.single("video"),

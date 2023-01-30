@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import fs from "fs";
+import path from "path";
 const morgan = require("morgan");
 require("dotenv").config();
 
@@ -30,6 +31,10 @@ app.use(morgan("dev"));
 // set up routes
 // send public folder as static
 app.use("/public", express.static("public"));
+// test route
+app.use("/test", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 
 fs.readdirSync("./routes").map((file) => {
   app.use("/api", require(`./routes/${file}`));

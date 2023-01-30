@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination, EffectCoverflow } from "swiper";
-
+import SwiperCore, {
+  Navigation,
+  Pagination,
+  EffectCoverflow,
+  Autoplay,
+} from "swiper";
+import { assetsLocations } from "../../utils/assetsLocations.js";
 // Import Swiper styles
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
 import "swiper/components/effect-coverflow/effect-coverflow.scss";
-import clipList from "../../data/ClipList";
 import Lightbox from "../general/Lightbox";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import client from "../../apiConfig/api";
+import { CaretRightFilled, PlayCircleOutlined } from "@ant-design/icons";
 
-SwiperCore.use([Navigation, Pagination, EffectCoverflow]);
+SwiperCore.use([Navigation, Pagination, EffectCoverflow, Autoplay]);
 
 export default function SwiperCoverflow() {
-  const [clips, setClips] = useState(clipList);
+  const [clips, setClips] = useState([]);
   const [lightbox, setLightbox] = useState({
     open: false,
     current: 0,
@@ -43,91 +50,137 @@ export default function SwiperCoverflow() {
       open: true,
     });
   };
-
+  const loadData = async () => {
+    try {
+      const apiCall = await client.get("/clip/");
+      if (apiCall.ok) {
+        setClips(apiCall.data.data);
+      }
+    } catch (err) {
+      toast.error("Une erreur est survenue ");
+    }
+  };
   useEffect(() => {
-    setClips(clipList);
+    loadData();
   }, []);
+
+  console.log(clips);
 
   return (
     <div className="App">
-      <Lightbox
-        lightbox={lightbox}
-        lightBoxToggle={lightBoxToggle}
-        lightboxNext={lightboxNext}
-        lightboxPrev={lightboxPrev}
-        content={{ type: "video", src: clips[lightbox.current].video }}
-      />
-      <Swiper
-        className="d-block d-md-none "
-        navigation
-        pagination={{ clickable: true }}
-        effect="coverflow"
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        slidesPerView={1}
-        centeredSlides
-      >
-        {clips.map((clip, index) => {
-          return (
-            <SwiperSlide>
-              <div
-                className="swiper-child"
-                style={{
-                  backgroundImage: `url(${clip.image})`,
-                }}
-                onClick={() => {
-                  setLightboxCurrent(index);
-                }}
-              >
-                <button className="swiper-button">
-                  <i className="fas fa-play" />
-                </button>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {clips.length > 0 && (
+        <>
+          {lightbox.open && (
+            <Lightbox
+              lightbox={lightbox}
+              lightBoxToggle={lightBoxToggle}
+              lightboxNext={lightboxNext}
+              lightboxPrev={lightboxPrev}
+              content={{
+                type: "video",
+                src: clips[lightbox.current]
+                  ? `${assetsLocations.videos}/${
+                      clips[lightbox.current].video.path
+                    }`
+                  : "",
+              }}
+            />
+          )}
 
-      <Swiper
-        className="d-none d-md-block"
-        navigation
-        pagination={{ clickable: true }}
-        effect="coverflow"
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        slidesPerView={4}
-        centeredSlides
-      >
-        {clips.map((clip, index) => {
-          return (
-            <SwiperSlide>
-              <div
-                className="swiper-child"
-                style={{
-                  backgroundImage: `url(${clip.image})`,
-                }}
-                onClick={() => {
-                  setLightboxCurrent(index);
-                }}
-              >
-                <button className="swiper-button">
-                  <i className="fas fa-play" />
-                </button>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+          <Swiper
+            className="d-block d-md-none"
+            pagination={{ clickable: true }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+              scale: 0.9,
+            }}
+            slidesPerView={1}
+            centeredSlides
+            loop={true}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: true,
+            }}
+          >
+            {clips.map((clip, index) => {
+              return (
+                <SwiperSlide>
+                  <div
+                    className="swiper-child"
+                    style={{
+                      backgroundImage: `url(${assetsLocations.images} }}/${clip.image.path})`,
+                    }}
+                    onClick={() => {
+                      setLightboxCurrent(index);
+                    }}
+                  >
+                    <img
+                      src={`${assetsLocations.images}/${clip.image.path}`}
+                      alt="img"
+                      className="clip__img"
+                    />
+                    <button className="swiper-button">
+                      <i className="fas fa-play" />
+                    </button>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+
+          <Swiper
+            className="d-none d-md-block"
+            navigation
+            pagination={{ clickable: true }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+              scale: 0.9,
+            }}
+            slidesPerView={4}
+            centeredSlides
+            loop={true}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: true,
+            }}
+          >
+            {clips.map((clip, index) => {
+              return (
+                <SwiperSlide>
+                  <div
+                    className="swiper-child"
+                    style={{
+                      backgroundImage: `url(${assetsLocations.images} }}/${clip.image.path})`,
+                    }}
+                    onClick={() => {
+                      setLightboxCurrent(index);
+                    }}
+                  >
+                    <img
+                      src={`${assetsLocations.images}/${clip.image.path}`}
+                      alt="img"
+                      className="clip__img"
+                    />
+                    <button className="swiper-button">
+                      <CaretRightFilled />
+                    </button>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </>
+      )}
     </div>
   );
 }

@@ -2,25 +2,26 @@ import React from "react";
 import MainNav from "../components/Navbars/MainNav";
 import Popup from "../components/general/Popup";
 import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 export default function UserLayout({ children }) {
   // get variables from redux runSaga
-  const followed = useSelector((state) => state.follow.followed);
+  const location = useLocation();
 
-  console.log(followed);
-
-  const [isPermitted, setIsPermitted] = React.useState(followed);
+  const blackPages = ["/contact", "/galerie"];
 
   useEffect(() => {
-    const localFollowed = localStorage.getItem("followed");
-    if (localFollowed) {
-      setIsPermitted(true);
+    const body = document.querySelector("body");
+    console.log(location.pathname);
+    if (blackPages.includes(location.pathname)) {
+      body.classList.add("black");
+    } else {
+      body.classList.remove("black");
     }
-  }, []);
+  }, [location]);
 
   return (
     <div className="container-fluid" id="content-container">
-      {/* <Popup open={isPermitted} /> */}
       <div className="row">
         <MainNav />
       </div>

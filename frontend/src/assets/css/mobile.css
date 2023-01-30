@@ -67,4 +67,47 @@
      .lightbox-content iframe{
           max-width: 99vw;
      }
+     .lightbox-img.galerie_img{
+          width: 100%;
+     }
+     .lightbox-content img{
+          width: 100%;
+     }
+     .galerie-lightbox-nav{
+          width: 90%;
+          bottom: -40%;
+     }
+     .galerie-lightbox-close{
+          margin-top: -30px;
+          right: 0;
+     }
+     .galerie-lightbox-nav img{
+          width: 30px;
+     }
+     .plus_mark{
+          width: 33%;
+     }
+     .background-main{
+          max-width: none;
+          max-width: 300vw;
+          width: auto;
+
+     }
+     .music__list_container{
+          grid-template-columns: 1fr;
+     }
+     .popup_image{
+          border-right: 0;
+          border-bottom: 2px solid white;
+          margin-bottom: 1em !important;
+          transform: scale(0.9);
+     }
+     .popup_separator{
+          display: none;
+     }
+    
+     .popup{
+          padding: 1em 1em 1.5em;
+          margin: 0px 1em;
+     }
    }
