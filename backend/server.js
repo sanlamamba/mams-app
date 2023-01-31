@@ -33,7 +33,7 @@ app.use(morgan("dev"));
 app.use("/public", express.static("public"));
 // test route
 app.use("/test", (req, res) => {
-  res.send("test route");
+  res.send("test route : MAMS API");
 });
 
 fs.readdirSync("./routes").map((file) => {
