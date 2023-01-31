@@ -139,20 +139,20 @@ export default function SwiperCoverflow() {
             pagination={{ clickable: true }}
             effect="coverflow"
             coverflowEffect={{
-              rotate: 50,
-              stretch: 0,
+              rotate: -10,
+              stretch: -50,
               depth: 100,
               modifier: 1,
               slideShadows: false,
-              scale: 0.9,
+              scale: 0.95,
             }}
             slidesPerView={4}
             centeredSlides
             loop={true}
-            autoplay={{
-              delay: 1000,
-              disableOnInteraction: true,
-            }}
+            // autoplay={{
+            //   delay: 1000,
+            //   disableOnInteraction: true,
+            // }}
           >
             {clips.map((clip, index) => {
               return (

@@ -531,3 +531,8 @@ input, textarea{
 .music__solo{
   height: fit-content;
 }
+
+
+.swiper-slide.swiper-slide-duplicate{
+  transform: rotateY(-45deg);
+}
