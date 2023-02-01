@@ -1,5 +1,4 @@
-import express from "express";
-
+const express = require("express");
 const ENDPOINT = "message";
 const router = express.Router();
 

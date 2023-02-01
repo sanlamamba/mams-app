@@ -1,5 +1,4 @@
-import express from "express";
-import requireToken from "../middlewares/requireToken";
+const express = require("express");
 const ENDPOINT = "auth";
 const router = express.Router();
 
@@ -10,7 +9,7 @@ router.post(`/${ENDPOINT}/login`, authController.login);
 router.get(`/${ENDPOINT}/logout`, authController.logout);
 router.post(
   `/${ENDPOINT}/current-user`,
-  requireToken,
+  // requireToken,
   authController.currentUser
 );
 

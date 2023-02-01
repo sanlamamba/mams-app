@@ -1,5 +1,5 @@
 require("dotenv").config();
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 const requireToken = (req, res, next) => {
   const token =

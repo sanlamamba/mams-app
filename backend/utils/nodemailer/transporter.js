@@ -18,4 +18,4 @@ const mailData = {
   html: "<b>Hey there! </b> <br> This is our first message sent with Nodemailer<br/>",
 };
 
-export default transporter;
+module.exports = transporter;

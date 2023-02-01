@@ -67,4 +67,4 @@ const fileManager = {
   musicRemover,
 };
 
-export default fileManager;
+module.exports = fileManager;

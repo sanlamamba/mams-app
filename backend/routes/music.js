@@ -1,8 +1,6 @@
-import express from "express";
-import requireToken from "../middlewares/requireToken";
-import fileManager from "../utils/fileManager";
-import multerConfig from "../utils/multer/multerConfig";
-
+const express = require("express");
+const fileManager = require("../utils/fileManager");
+const multerConfig = require("../utils/multer/multerConfig");
 const { musicRemover, videoRemover, fileRemover } = fileManager;
 
 const ENDPOINT = "music";

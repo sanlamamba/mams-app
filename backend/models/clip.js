@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-export const ClipSchema = new Schema(
+const ClipSchema = new Schema(
   {
     video: {
       path: { type: String, required: true },
@@ -13,4 +13,4 @@ export const ClipSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Clip", ClipSchema);
+module.exports = mongoose.model("Clip", ClipSchema);

@@ -1,7 +1,6 @@
-import Music from "../models/music";
-import slugify from "slugify";
 const fs = require("fs");
-
+const Music = require("../models/music");
+const slugify = require("slugify");
 const musicRemover = async (music) => {
   const path = "public/music/" + music;
   await fs.unlink(path, (err) => {
@@ -12,7 +11,7 @@ const musicRemover = async (music) => {
   });
 };
 
-export const getAllMusic = async (req, res) => {
+const getAllMusic = async (req, res) => {
   try {
     const music = await Music.find({});
     res.status(200).json({
@@ -27,7 +26,7 @@ export const getAllMusic = async (req, res) => {
   }
 };
 
-export const getMusic = async (req, res, next) => {
+const getMusic = async (req, res, next) => {
   try {
     console.log("asdad");
     console.log(req.params.id);
@@ -46,7 +45,7 @@ export const getMusic = async (req, res, next) => {
   }
 };
 
-export const uploadMusic = async (req, res, next) => {
+const uploadMusic = async (req, res, next) => {
   try {
     const music = req.file;
     res.status(200).json({
@@ -61,7 +60,7 @@ export const uploadMusic = async (req, res, next) => {
   }
 };
 
-export const removeMusic = async (req, res, next) => {
+const removeMusic = async (req, res, next) => {
   try {
     res.status(200).json({
       message: "Music Deleted successfully",
@@ -74,7 +73,7 @@ export const removeMusic = async (req, res, next) => {
   }
 };
 
-export const createMusic = async (req, res, next) => {
+const createMusic = async (req, res, next) => {
   // try {
   const musicFile = new Music({
     title: req.body.title,
@@ -94,7 +93,7 @@ export const createMusic = async (req, res, next) => {
   // }
 };
 
-export const getImages = async (req, res, next) => {
+const getImages = async (req, res, next) => {
   try {
     const images = await Image.find();
     images.sort((a, b) => b.createdAt - a.createdAt);
@@ -111,7 +110,7 @@ export const getImages = async (req, res, next) => {
   }
 };
 
-export const createCourse = async (req, res, next) => {
+const createCourse = async (req, res, next) => {
   // try {
   const alreadyExists = await Course.findOne({
     slug: slugify(req.body.title, { lower: true }),
@@ -133,7 +132,7 @@ export const createCourse = async (req, res, next) => {
   });
 };
 
-export const viewCourse = async (req, res, next) => {
+const viewCourse = async (req, res, next) => {
   try {
     const course = await Course.findOne({ slug: req.body.slug })
       .populate("instructor", "_id name")
@@ -155,7 +154,7 @@ export const viewCourse = async (req, res, next) => {
   }
 };
 
-export const removeImage = async (req, res, next) => {
+const removeImage = async (req, res, next) => {
   try {
     const imageId = req.params.id;
     // console.log(`Removing ${imageId}`);
@@ -172,7 +171,7 @@ export const removeImage = async (req, res, next) => {
   }
 };
 
-export const uploadVideo = async (req, res, next) => {
+const uploadVideo = async (req, res, next) => {
   try {
     const video = req.file;
     res.status(200).json({
@@ -187,7 +186,7 @@ export const uploadVideo = async (req, res, next) => {
   }
 };
 
-export const removeVideo = async (req, res, next) => {
+const removeVideo = async (req, res, next) => {
   try {
     res.status(200).json({
       message: "Video deleted successfully",
@@ -199,7 +198,8 @@ export const removeVideo = async (req, res, next) => {
     });
   }
 };
-export const updateMusic = async (req, res, next) => {
+
+const updateMusic = async (req, res, next) => {
   try {
     const updatedMusic = await Music.findByIdAndUpdate(
       { _id: req.params.id },
@@ -219,7 +219,8 @@ export const updateMusic = async (req, res, next) => {
     });
   }
 };
-export const deleteMusic = async (req, res, next) => {
+
+const deleteMusic = async (req, res, next) => {
   try {
     const music = await Music.find({ _id: req.query.id });
     const file = music[0].audio;
@@ -239,7 +240,7 @@ export const deleteMusic = async (req, res, next) => {
   }
 };
 
-export const incrementRead = async (req, res, next) => {
+const incrementRead = async (req, res, next) => {
   try {
     const music = await Music.findOneAndUpdate(
       {
@@ -259,4 +260,21 @@ export const incrementRead = async (req, res, next) => {
       data: err,
     });
   }
+};
+
+module.exports = {
+  getAllMusic,
+  getMusic,
+  uploadMusic,
+  removeMusic,
+  createMusic,
+  getImages,
+  createCourse,
+  viewCourse,
+  removeImage,
+  uploadVideo,
+  removeVideo,
+  updateMusic,
+  deleteMusic,
+  incrementRead,
 };

@@ -1,5 +1,4 @@
-import slugify from "slugify";
-
+const slugify = require("slugify");
 const multer = require("multer");
 
 const multerConfig = {
@@ -27,4 +26,4 @@ const multerConfig = {
   }),
 };
 
-export default multerConfig;
+module.exports = multerConfig;

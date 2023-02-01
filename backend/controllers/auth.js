@@ -1,8 +1,9 @@
-import User from "../models/user";
-import { hashPassword, comparePassword } from "../utils/auth/auth";
-import jwt from "jsonwebtoken";
+const User = require("../models/user");
+const auth = require("../utils/auth/auth");
+const { hashPassword, comparePassword } = auth;
+const jwt = require("jsonwebtoken");
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
   try {
     const { nom, prenom = "", email, password } = req.body;
     if (!nom || !email || !password) {
@@ -37,7 +38,7 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -85,7 +86,7 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
+const logout = async (req, res) => {
   try {
     res.clearCookie("token");
     return res.json({
@@ -100,7 +101,7 @@ export const logout = async (req, res) => {
   }
 };
 
-export const currentUser = async (req, res) => {
+const currentUser = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select("-password").exec();
     // console.log("current user", user);
@@ -114,4 +115,11 @@ export const currentUser = async (req, res) => {
       message: "Error lors de la récupération de l'utilisateur",
     });
   }
+};
+
+module.exports = {
+  register,
+  login,
+  logout,
+  currentUser,
 };

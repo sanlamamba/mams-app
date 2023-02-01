@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+
 const { Schema } = mongoose;
 
-export const MusicSchema = new Schema(
+const MusicSchema = new Schema(
   {
     title: {
       type: String,
@@ -28,4 +29,4 @@ export const MusicSchema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Music", MusicSchema);
+module.exports = mongoose.model("Music", MusicSchema);

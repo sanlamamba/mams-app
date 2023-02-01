@@ -1,5 +1,6 @@
-import Clip from "../models/clip";
-import transporter from "../utils/nodemailer/transporter";
+const ErrorWithin = require("../middlewares/ErrorWithin");
+const Clip = require("../models/clip");
+const transporter = require("../utils/nodemailer/transporter");
 const fs = require("fs");
 
 const imageRemover = async (image) => {
@@ -21,7 +22,8 @@ const videoRemover = async (video) => {
     return true;
   });
 };
-export const createClip = async (req, res, next) => {
+
+const createClip = async (req, res, next) => {
   try {
     const clip = new Clip(req.body);
     const savedClip = await clip.save();
@@ -37,7 +39,7 @@ export const createClip = async (req, res, next) => {
   }
 };
 
-export const uploadImage = async (req, res, next) => {
+const uploadImage = async (req, res, next) => {
   try {
     const image = req.file;
     res.status(200).json({
@@ -52,7 +54,7 @@ export const uploadImage = async (req, res, next) => {
   }
 };
 
-export const deleteImage = async (req, res, next) => {
+const deleteImage = async (req, res, next) => {
   try {
     res.status(200).json({
       message: "Image deleted successfully",
@@ -65,7 +67,7 @@ export const deleteImage = async (req, res, next) => {
   }
 };
 
-export const uploadVideo = async (req, res, next) => {
+const uploadVideo = async (req, res, next) => {
   try {
     const image = req.file;
     res.status(200).json({
@@ -80,7 +82,7 @@ export const uploadVideo = async (req, res, next) => {
   }
 };
 
-export const deleteVideo = async (req, res, next) => {
+const deleteVideo = async (req, res, next) => {
   try {
     res.status(200).json({
       message: "Video deleted successfully",
@@ -92,7 +94,8 @@ export const deleteVideo = async (req, res, next) => {
     });
   }
 };
-export const getAllClips = async (req, res, next) => {
+
+const getAllClips = async (req, res, next) => {
   try {
     const clips = await Clip.find({});
     res.status(200).json({
@@ -107,7 +110,7 @@ export const getAllClips = async (req, res, next) => {
   }
 };
 
-export const getClip = async (req, res, next) => {
+const getClip = async (req, res, next) => {
   try {
     const clip = await Clip.findById(req.params.id);
     console.log(clip);
@@ -124,7 +127,7 @@ export const getClip = async (req, res, next) => {
   }
 };
 
-export const deleteClip = async (req, res, next) => {
+const deleteClip = async (req, res, next) => {
   try {
     const clip = await Clip.find({ _id: req.query.id });
     const video = clip[0].video.path;
@@ -146,7 +149,7 @@ export const deleteClip = async (req, res, next) => {
   }
 };
 
-export const updateClip = async (req, res, next) => {
+const updateClip = async (req, res, next) => {
   try {
     const updatedClip = await Clip.findByIdAndUpdate(
       { _id: req.params.id },
@@ -165,4 +168,16 @@ export const updateClip = async (req, res, next) => {
       data: err,
     });
   }
+};
+
+module.exports = {
+  createClip,
+  uploadImage,
+  deleteImage,
+  uploadVideo,
+  deleteVideo,
+  getAllClips,
+  getClip,
+  deleteClip,
+  updateClip,
 };
