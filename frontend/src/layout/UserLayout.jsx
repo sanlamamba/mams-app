@@ -4,11 +4,15 @@ import Popup from "../components/general/Popup";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import NavBtn from "../components/general/NavBtn";
 export default function UserLayout({ children }) {
   // get variables from redux runSaga
   const location = useLocation();
 
   const blackPages = ["/contact", "/galerie"];
+  const token = localStorage.getItem("token") || null;
+
+  console.log(token);
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -22,6 +26,7 @@ export default function UserLayout({ children }) {
 
   return (
     <div className="container-fluid" id="content-container">
+      {token && <NavBtn path={"/admin"} text="Admin" />}
       <div className="row">
         <MainNav />
       </div>

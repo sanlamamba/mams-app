@@ -82,7 +82,7 @@ function App() {
           path="/admin/profile"
           element={
             <AdminLayout>
-              <h1>asdsadasd</h1>
+              <h1>Mams App</h1>
             </AdminLayout>
           }
         />

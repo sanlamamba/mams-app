@@ -1,15 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import client from "../../apiConfig/api";
 import { Badge } from "antd";
 export default function AdminNav() {
   const { nom, prenom, email } = useSelector((state) => state.auth);
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+  const logOut = () => {
+    // delete localstorage content
+    dispatch({ type: "LOGOUT_REQUEST" });
+  };
 
   const isActivePage = (pageArray) => {
     if (pageArray.includes(location.pathname.split("/")[2])) {
@@ -77,6 +83,10 @@ export default function AdminNav() {
               )}
             </Link>
           </li>
+          {/* log out Button */}
+          <button className="btn btn-danger" type="button" onClick={logOut}>
+            Deconnexion
+          </button>
         </ul>
       </div>
     </div>

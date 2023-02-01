@@ -3,9 +3,10 @@ import LoginForm from "../../../components/Forms/LoginForm";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import NavBtn from "../../../components/general/NavBtn";
 
 export default function Index() {
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector((state) => state.auth.token) || null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // check if localStorage user exists
@@ -24,12 +25,13 @@ export default function Index() {
         },
       });
     }
-    if (token.length > 0) {
+    if (token) {
       navigate("/admin/profile");
     }
   }, [token]);
   return (
     <div className="container d-flex justify-content-center align-items-center login__container">
+      <NavBtn path={"/"} text={"Retourner au site"} />
       <div className="col-md-5 col-12">
         <LoginForm />
       </div>

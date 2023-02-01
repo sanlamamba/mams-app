@@ -536,3 +536,13 @@ input, textarea{
 .swiper-slide.swiper-slide-duplicate{
   transform: rotateY(-45deg);
 }
+.nav-btn{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2.5%;
+  opacity: 0.4;
+}
+.nav-btn button{
+  font-weight: 500;
+}

@@ -4,6 +4,7 @@ const initialState = {
   prenom: "",
   email: "",
   token: "",
+  loginError: false,
   playing: false,
   projet: {
     link: "",

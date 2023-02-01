@@ -6,35 +6,16 @@ import {
   setPlaying,
   setCurrentSong,
   setFollow,
+  logout,
 } from "../redux/features/auth/authSlice";
 import api from "../../apiConfig/requests";
 import client from "../../apiConfig/api";
 
 function* fetchUser(action) {
-  // try {
-  // console.log(action.payload);
-  const data = {
-    email: action.payload.email,
-    password: action.payload.password,
-  };
-  const apiCall = yield call(api.postData, {
-    endpoint: "/auth/login",
-    req: data,
-  });
-  // console.log(apiCall);
-  if (apiCall.ok) {
-    const data = apiCall.data.data;
-    const token = apiCall.data.token;
-    const user = {
-      nom: data.nom,
-      prenom: data.prenom,
-      email: data.email,
-      token,
-    };
-    yield put(connectUser(user));
-    window.localStorage.setItem("token", token);
-    window.localStorage.setItem("user", JSON.stringify(user));
-  }
+  const { user, token } = action.payload;
+  yield put(connectUser(user));
+  window.localStorage.setItem("token", token);
+  window.localStorage.setItem("user", JSON.stringify(user));
 }
 function* loadData(action) {
   const data = {
@@ -94,8 +75,16 @@ function* changeJustFollowed() {
   );
 }
 
+function* logUserOut() {
+  yield window.localStorage.removeItem("token");
+  yield window.localStorage.removeItem("user");
+  yield put(disconnectUser());
+}
+
 export default function* authSaga() {
   yield takeLatest("LOGIN_REQUEST", fetchUser);
+  yield takeLatest("LOGOUT_REQUEST", logUserOut);
+
   yield takeLatest("LOAD_LOGIN_DATA", loadData);
   yield takeLatest("START_PLAYING", startPlaying);
   yield takeLatest("STOP_PLAYING", stopPlaying);

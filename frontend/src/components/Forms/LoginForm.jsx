@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import client from "../../apiConfig/api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const loginError = useSelector((state) => state.auth.loginError);
+
+  console.log(loginError);
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -17,11 +22,39 @@ export default function LoginForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    dispatch({ type: "LOGIN_REQUEST", payload: values });
+    try {
+      const apiCall = await client.post("/auth/login", values);
+
+      if (apiCall.ok) {
+        const data = apiCall.data.data;
+        const token = apiCall.data.token;
+        const user = {
+          nom: data.nom,
+          prenom: data.prenom,
+          email: data.email,
+          token,
+        };
+        dispatch({
+          type: "LOGIN_REQUEST",
+          payload: {
+            user,
+            token,
+          },
+        });
+      } else {
+        console.log(apiCall);
+        toast.error(apiCall.data.message);
+      }
+    } catch (err) {
+      toast.error(err);
+    }
+
     // emptyForm();
+    setIsLoading(false);
   };
 
   const handleChange = (e) => {
@@ -67,7 +100,7 @@ export default function LoginForm() {
           </div>
         ) : (
           <button type="submit" onClick={handleSubmit}>
-            Submit
+            Se connecter
           </button>
         )}
       </div>
