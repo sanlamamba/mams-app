@@ -4,16 +4,15 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { message, Upload } from "antd";
-import { useState } from "react";
 import client from "../../apiConfig/api";
 import { toast } from "react-toastify";
 import { assetsLocations } from "../../utils/assetsLocations";
 
-const getBase64 = (img, callback) => {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-};
+// const getBase64 = (img, callback) => {
+//   const reader = new FileReader();
+//   reader.addEventListener("load", () => callback(reader.result));
+//   reader.readAsDataURL(img);
+// };
 const beforeUpload = (file) => {
   const isMusic = file.type === "audio/mp3" || file.type === "audio/mpeg";
   if (!isMusic) {

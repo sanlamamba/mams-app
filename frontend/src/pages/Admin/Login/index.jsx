@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import LoginForm from "../../../components/Forms/LoginForm";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NavBtn from "../../../components/general/NavBtn";
@@ -9,7 +8,6 @@ export default function Index() {
   const token = useSelector((state) => state.auth.token) || null;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // check if localStorage user exists
   const localStorageExists = localStorage.getItem("token");
   console.log(localStorageExists);
 
@@ -28,6 +26,7 @@ export default function Index() {
     if (token) {
       navigate("/admin/profile");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   return (
     <div className="container d-flex justify-content-center align-items-center login__container">

@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import galerieList from "../../../data/GalerieList";
 import { useState } from "react";
-import { Image } from "antd";
 import client from "../../../apiConfig/api";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -123,13 +120,13 @@ export default function GalerieNew() {
   );
 }
 
-const ImageUploaded = ({ src }) => {
-  return (
-    <div className="admin__image">
-      <Image src={src} className="img-fluid uploaded_image " />
-    </div>
-  );
-};
+// const ImageUploaded = ({ src }) => {
+//   return (
+//     <div className="admin__image">
+//       <Image src={src} className="img-fluid uploaded_image " />
+//     </div>
+//   );
+// };
 
 const ImageUploader = ({ uploadImage }) => {
   return (

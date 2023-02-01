@@ -9,7 +9,6 @@ import { useEffect } from "react";
 export default function EditMusic() {
   const id = useParams().id;
 
-  const [loaded, setLoaded] = useState(false);
   const [title, setTitle] = useState("");
   const [music, setMusic] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,10 +31,6 @@ export default function EditMusic() {
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
-  const setMusicFile = (path) => {
-    setMusic(path);
-    setLoading(false);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +51,7 @@ export default function EditMusic() {
   };
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -10,7 +10,7 @@ import Login from "./pages/Admin/Login";
 import AdminLayout from "./layout/AdminLayout";
 import GalerieNew from "./pages/Admin/Galerie/GalerieNew";
 import MessageList from "./pages/Admin/Message/MessageList";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import ClipsList from "./pages/Admin/Clips/ClipsList";
 import ClipsNouveau from "./pages/Admin/Clips/ClipsNouveau";
 import ClipEdit from "./pages/Admin/Clips/ClipEdit";
@@ -28,9 +28,6 @@ function App() {
 
   return (
     <div id="App">
-      {/* <button type="button" onClick={alertme}>
-        ADASDASD
-      </button> */}
       <Routes>
         <Route
           path="*"

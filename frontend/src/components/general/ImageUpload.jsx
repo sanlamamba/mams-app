@@ -4,15 +4,14 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import { message, Upload } from "antd";
-import { useState } from "react";
 import client from "../../apiConfig/api";
 import { toast } from "react-toastify";
 
-const getBase64 = (img, callback) => {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-};
+// const getBase64 = (img, callback) => {
+//   const reader = new FileReader();
+//   reader.addEventListener("load", () => callback(reader.result));
+//   reader.readAsDataURL(img);
+// };
 const beforeUpload = (file) => {
   const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
   if (!isJpgOrPng) {

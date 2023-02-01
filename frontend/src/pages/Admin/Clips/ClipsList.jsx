@@ -1,6 +1,5 @@
 import React from "react";
-import clipList from "../../../data/ClipList";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
 import client from "../../../apiConfig/api";

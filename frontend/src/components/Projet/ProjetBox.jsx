@@ -14,8 +14,8 @@ import { toast } from "react-toastify";
 export default function ProjetBox() {
   const playing = useSelector((state) => state.auth.playing);
   const currentSong = useSelector((state) => state.auth.projet);
-  const [loading, setLoading] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const [music, setMusic] = useState([]);
   const [musicState, setMusicState] = useState({
@@ -50,7 +50,7 @@ export default function ProjetBox() {
   };
   const createTimeoutForProgress = () => {
     const currTime = convertToTime(audioRef.current.currentTime);
-    const endTime = audioRef.current.duration;
+    // const endTime = audioRef.current.duration;
     const progress =
       (audioRef.current.currentTime / audioRef.current.duration) * 100;
     if (audioRef.current.currentTime >= audioRef.current.duration) {
@@ -131,6 +131,7 @@ export default function ProjetBox() {
   };
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const audioRef = useRef(null);
 
@@ -144,6 +145,7 @@ export default function ProjetBox() {
     } else {
       audioRef.current.pause();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playing]);
 
   const changeAudioSrc = async () => {
@@ -154,6 +156,7 @@ export default function ProjetBox() {
 
   useEffect(() => {
     changeAudioSrc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSong.link]);
 
   return (

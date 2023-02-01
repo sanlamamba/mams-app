@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Lightbox from "../../../components/general/Lightbox";
-import galerieList from "../../../data/GalerieList";
 import client from "../../../apiConfig/api";
 import { useEffect } from "react";
 import { assetsLocations } from "../../../utils/assetsLocations";

@@ -16,7 +16,7 @@ import Lightbox from "../general/Lightbox";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import client from "../../apiConfig/api";
-import { CaretRightFilled, PlayCircleOutlined } from "@ant-design/icons";
+import { CaretRightFilled } from "@ant-design/icons";
 
 SwiperCore.use([Navigation, Pagination, EffectCoverflow, Autoplay]);
 

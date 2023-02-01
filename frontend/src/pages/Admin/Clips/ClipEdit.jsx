@@ -35,7 +35,6 @@ export default function ClipEdit() {
       toast.error(err.message);
     }
   };
-  const [loaded, setLoaded] = useState(false);
   const [loader, setLoader] = useState(false);
   const [values, setValues] = useState({
     video: {
@@ -91,6 +90,7 @@ export default function ClipEdit() {
   };
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="container">

@@ -13,10 +13,6 @@ export default function NewMusic() {
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
-  const setMusicFile = (path) => {
-    setMusic(path);
-    setLoading(false);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -17,6 +17,7 @@ function BackToTop({ scroll }) {
 
   useEffect(() => {
     handleScroll(window.pageYOffset);
+    setTopOffset(window.pageYOffset);
   }, [topOffset]);
 
   return (

@@ -1,8 +1,6 @@
 import React from "react";
 import MainNav from "../components/Navbars/MainNav";
-import Popup from "../components/general/Popup";
-import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import NavBtn from "../components/general/NavBtn";
 export default function UserLayout({ children }) {
@@ -22,6 +20,7 @@ export default function UserLayout({ children }) {
     } else {
       body.classList.remove("black");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   return (

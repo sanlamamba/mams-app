@@ -2,13 +2,12 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import client from "../../apiConfig/api";
 import { Badge } from "antd";
 export default function AdminNav() {
   const { nom, prenom, email } = useSelector((state) => state.auth);
   const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);

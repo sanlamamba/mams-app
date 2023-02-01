@@ -1,15 +1,13 @@
-import { call, put, takeLatest, select } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 import {
   connectUser,
   disconnectUser,
-  setJustLoggedOut,
   setPlaying,
   setCurrentSong,
   setFollow,
-  logout,
 } from "../redux/features/auth/authSlice";
-import api from "../../apiConfig/requests";
 import client from "../../apiConfig/api";
+import { toast } from "react-toastify";
 
 function* fetchUser(action) {
   const { user, token } = action.payload;
@@ -46,6 +44,9 @@ function* incrementReadCount(action) {
     const apiCall = yield client.put(`/music/${action.payload}/incrementRead`, {
       id: action.payload,
     });
+    if (!apiCall.ok) {
+      toast.error("Erreur pendant le telechargement");
+    }
   } catch (err) {
     console.log(err);
   }

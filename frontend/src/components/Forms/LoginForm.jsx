@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import client from "../../apiConfig/api";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { EyeFilled, EyeOutlined } from "@ant-design/icons";
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -15,12 +16,7 @@ export default function LoginForm() {
   });
 
   const dispatch = useDispatch();
-  const emptyForm = () => {
-    setValues({
-      email: "",
-      password: "",
-    });
-  };
+  const [viewPassword, setViewPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -82,15 +78,24 @@ export default function LoginForm() {
 
       <div class="form-group">
         <label for="input-password">Password</label>
-        <input
-          type="password"
-          class="form-control form-control-sm"
-          id="input-password"
-          placeholder="Password"
-          name="password"
-          value={values.password}
-          onChange={handleChange}
-        />
+        <div className="password_input_container">
+          <input
+            type={viewPassword ? "text" : "password"}
+            class="form-control form-control-sm"
+            id="input-password"
+            placeholder="Password"
+            name="password"
+            value={values.password}
+            onChange={handleChange}
+          />
+          <button
+            type="button"
+            className="hide_password"
+            onClick={() => setViewPassword(!viewPassword)}
+          >
+            {viewPassword ? <EyeFilled /> : <EyeOutlined />}
+          </button>
+        </div>
       </div>
 
       <div class="form-group form-check-inline d-flex justify-content-end">

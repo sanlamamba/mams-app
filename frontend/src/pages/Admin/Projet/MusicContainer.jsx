@@ -2,7 +2,6 @@ import {
   DeleteOutlined,
   EditOutlined,
   PlayCircleOutlined,
-  PlusOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";

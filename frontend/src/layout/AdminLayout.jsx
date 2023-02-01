@@ -16,6 +16,7 @@ export default function AdminLayout({ children }) {
     if (!token) {
       navigate("/admin", { replace: true });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
   useEffect(() => {
     if (localStorageExists != null) {
@@ -28,6 +29,7 @@ export default function AdminLayout({ children }) {
         },
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="container-fluid p-4" id="admin-content">

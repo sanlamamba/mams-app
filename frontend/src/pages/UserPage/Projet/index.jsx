@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import ProjetBox from "../../../components/Projet/ProjetBox";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import Popup from "../../../components/general/Popup";
 
 export default function Index() {
   const playing = useSelector((state) => state.auth.playing);
   const followed = useSelector((state) => state.auth.follow);
-  const location = useLocation();
 
   const [isPermitted, setIsPermitted] = React.useState(false);
   useEffect(() => {

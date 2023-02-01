@@ -3,31 +3,30 @@ import {
   LoadingOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
-import { message, Upload } from "antd";
-import { useState } from "react";
+import { Upload } from "antd";
 import client from "../../apiConfig/api";
 import { toast } from "react-toastify";
 
-const getBase64 = (img, callback) => {
-  const reader = new FileReader();
-  reader.addEventListener("load", () => callback(reader.result));
-  reader.readAsDataURL(img);
-};
-const beforeUpload = (file) => {
-  const isVideo =
-    file.type === "video/mp4" ||
-    file.type === "video/webm" ||
-    file.type === "video/ogg" ||
-    file.type === "video/flv" ||
-    file.type === "video/avi";
+// const getBase64 = (img, callback) => {
+//   const reader = new FileReader();
+//   reader.addEventListener("load", () => callback(reader.result));
+//   reader.readAsDataURL(img);
+// };
+// const beforeUpload = (file) => {
+//   const isVideo =
+//     file.type === "video/mp4" ||
+//     file.type === "video/webm" ||
+//     file.type === "video/ogg" ||
+//     file.type === "video/flv" ||
+//     file.type === "video/avi";
 
-  if (isVideo) {
-    message.error("You can only upload videos");
-  }
-  console.log(file.type);
+//   if (isVideo) {
+//     message.error("You can only upload videos");
+//   }
+//   console.log(file.type);
 
-  return isVideo;
-};
+//   return isVideo;
+// };
 
 const VideoUpload = ({ video, setVideo, setLoad, loading }) => {
   const handleDelete = async () => {
