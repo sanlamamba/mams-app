@@ -150,4 +150,7 @@
           position: absolute;
           bottom: 0;
      }
+     .footer{
+          z-index: 5;
+     }
    }
