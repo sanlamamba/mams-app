@@ -136,4 +136,18 @@
           bottom: -150px;
           z-index: 2;
      }
+
+     .contact__img{
+          position: absolute;
+          height: 100vh;
+          z-index: 1;
+     }
+     .form__container{
+          z-index: 2;
+     }
+     .contact__img img{
+          height: 30vh;
+          position: absolute;
+          bottom: 0;
+     }
    }
