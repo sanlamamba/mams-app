@@ -1,3 +1,4 @@
+import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -43,7 +44,7 @@ export default function MainNav() {
                 data-bs-toggle="collapse"
                 onClick={toggleMobileNav}
               >
-                X
+                <CloseOutlined />
               </button>
             </li>
             <li
@@ -83,7 +84,7 @@ export default function MainNav() {
           type="button"
           onClick={toggleMobileNav}
         >
-          <i className="fas fa-bars text-white"></i>
+          <MenuOutlined />
         </button>
       </div>
     </nav>

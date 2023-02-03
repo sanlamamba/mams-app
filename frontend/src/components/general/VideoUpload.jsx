@@ -74,8 +74,22 @@ const VideoUpload = ({ video, setVideo, setLoad, loading }) => {
   );
   return (
     <>
-      {video === "" ? (
-        <Upload
+      {/* {video === "" ? ( */}
+      <div className="video_uploader">
+        <p>Lien Youtube</p>
+        {/* input for youtube link */}
+        <input
+          type="text"
+          name="video"
+          id="video"
+          value={video}
+          onChange={(e) => {
+            setVideo(e.target.value);
+          }}
+          placeholder="https://www.youtube.com/embed/xxxxxxxxxx"
+        />
+
+        {/* <Upload
           name="video"
           listType="picture-card"
           className="video-uploader"
@@ -85,8 +99,9 @@ const VideoUpload = ({ video, setVideo, setLoad, loading }) => {
           onChange={handleChange}
         >
           {uploadButton}
-        </Upload>
-      ) : (
+        </Upload> */}
+      </div>
+      {/* ) : (
         <div className="image__upload_preview">
           <video loop controls muted width={"480"} height={"auto"}>
             <source src={video} type="video/mp4" />
@@ -98,7 +113,7 @@ const VideoUpload = ({ video, setVideo, setLoad, loading }) => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };

@@ -3,11 +3,12 @@ import MainNav from "../components/Navbars/MainNav";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import NavBtn from "../components/general/NavBtn";
+import Footer from "../components/Navbars/Footer";
 export default function UserLayout({ children }) {
   // get variables from redux runSaga
   const location = useLocation();
 
-  const blackPages = ["/contact", "/galerie"];
+  const blackPages = ["/galerie"];
   const token = localStorage.getItem("token") || null;
 
   console.log(token);
@@ -32,6 +33,7 @@ export default function UserLayout({ children }) {
       <div className="row" id="content">
         {children}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -3,43 +3,43 @@ const newMessageTemplates = require("../utils/nodemailer/template/newMessage");
 const transporter = require("../utils/nodemailer/transporter");
 
 const newMessage = async (req, res, next) => {
-  try {
-    const message = new Message(req.body);
-    const savedMessage = await message.save();
-    const output1 = newMessageTemplates.newMessageTemplate(
-      req.body.nom,
-      req.body.prenom,
-      req.body.mail,
-      req.body.message
-    );
-    const output2 = newMessageTemplates.senderNewMessage();
+  // try {
+  const message = new Message(req.body);
+  const savedMessage = await message.save();
+  const output1 = newMessageTemplates.newMessageTemplate(
+    req.body.nom,
+    req.body.prenom,
+    req.body.mail,
+    req.body.message
+  );
+  const output2 = newMessageTemplates.senderNewMessage();
 
-    const mailSent = await transporter.sendMail({
-      from: req.body.mail,
-      to: "test@sanlamamba.com",
-      subject: req.body.sujet,
-      text: "Nouveau Message",
-      html: output1,
-    });
+  const mailSent = await transporter.sendMail({
+    from: req.body.mail,
+    to: "test@sanlamamba.com",
+    subject: req.body.sujet,
+    text: "Nouveau Message",
+    html: output1,
+  });
 
-    const mailSent2 = await transporter.sendMail({
-      from: "test@sanlamamba.com",
-      to: req.body.mail,
-      subject: req.body.sujet,
-      text: "Mams : Votre message a été envoyé",
-      html: output2,
-    });
+  const mailSent2 = await transporter.sendMail({
+    from: "test@sanlamamba.com",
+    to: req.body.mail,
+    subject: req.body.sujet,
+    text: "Mams : Votre message a été envoyé",
+    html: output2,
+  });
 
-    res.status(201).json({
-      message: "Message successfully created",
-      data: savedMessage,
-    });
-  } catch (err) {
-    res.status(500).json({
-      message: "Error sending message",
-      data: err,
-    });
-  }
+  res.status(201).json({
+    message: "Message successfully created",
+    data: savedMessage,
+  });
+  // } catch (err) {
+  //   res.status(500).json({
+  //     message: "Error sending message",
+  //     data: err,
+  //   });
+  // }
 };
 
 const testMail = async (req, res, next) => {

@@ -114,4 +114,4 @@ const newMessageTemplates = {
   senderNewMessage,
 };
 
-module.exports = newMessageTemplate;
+module.exports = newMessageTemplates;

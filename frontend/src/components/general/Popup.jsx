@@ -5,7 +5,10 @@ export default function Popup({ open, justFollowed }) {
   const [loading, setLoading] = React.useState(false);
   const dispatch = useDispatch();
   const followClicked = () => {
-    window.open("https://www.instagram.com/p/nhqlv/", "_blank");
+    window.open(
+      "https://www.instagram.com/nhqlv/?igshid=YmMyMTA2M2Y=",
+      "_blank"
+    );
     setLoading(true);
     // after 5 seconds, set loading to false and dispatch redux action grant permission
     setTimeout(() => {

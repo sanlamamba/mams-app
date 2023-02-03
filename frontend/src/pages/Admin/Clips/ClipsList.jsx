@@ -56,7 +56,7 @@ export default function ClipsList() {
           {clips.map(function (clip, i) {
             return (
               <ClipBox
-                video={`${assetsLocations.videos}/${clip.video.path}`}
+                video={`${clip.video.path}`}
                 image={`${assetsLocations.images}/${clip.image.path}`}
                 id={clip._id}
                 requestDelete={requestDelete}
@@ -73,9 +73,12 @@ function ClipBox({ video, image, id, requestDelete }) {
   return (
     <div className="clip__container">
       <div className="clip__video_container">
-        <video loop controls muted>
-          <source src={video} type="video/mp4" />
-        </video>
+        <iframe
+          src={video}
+          frameborder="0"
+          allow="accelerometer; Zclipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </div>
       <div className="clip__image_container">
         <div className="clip__controls_container">

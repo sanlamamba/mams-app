@@ -194,7 +194,7 @@
      height: fit-content;
 
 }
-.clip__video_container video{
+.clip__video_container video, .clip__video_container iframe{
      width: 100%;
      min-height: 250px;
 }

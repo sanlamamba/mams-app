@@ -107,7 +107,7 @@ export default function ClipEdit() {
         </div>
       </div>
       <div className="row mt-4">
-        <div className="col-4">
+        <div className="col-12 mt-2">
           <p>Image du clip</p>
           <ImageUpload
             image={
@@ -120,7 +120,7 @@ export default function ClipEdit() {
             loading={values.image.loading}
           />
         </div>
-        <div className="col-8">
+        <div className="col-12 mt-2">
           <p>Video du clip</p>
           <VideoUpload
             video={

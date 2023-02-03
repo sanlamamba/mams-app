@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { assetsLocations } from "../../utils/assetsLocations";
+import { CloseOutlined } from "@ant-design/icons";
 
 function Lightbox({
   lightbox,
@@ -28,7 +29,9 @@ function Lightbox({
               className="galerie-lightbox-nav-btn"
               onClick={lightBoxToggle}
             >
-              <span className="galerie-icon">X</span>
+              <span className="galerie-icon">
+                <CloseOutlined color="#EA2B2B" />
+              </span>
             </button>
           </div>
           {content.type === "image" && (
@@ -84,6 +87,7 @@ function Lightbox({
                   <img
                     src={`${assetsLocations.images}/${content.src}`}
                     alt="Mams lightbox"
+                    className="lightbox__img"
                   />
                 ) : content.type === "video" ? (
                   <iframe

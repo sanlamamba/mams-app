@@ -36,7 +36,15 @@ export default function ClipsNouveau() {
       },
     });
   };
-
+  const setVideoInput = (path) => {
+    setValues({
+      ...values,
+      video: {
+        path: path,
+        loading: false,
+      },
+    });
+  };
   const setVideo = (path) => {
     setValues({
       ...values,
@@ -69,6 +77,8 @@ export default function ClipsNouveau() {
     }
     setLoader(false);
   };
+  console.log(values);
+
   return (
     <div className="container">
       <div className="row ">
@@ -84,7 +94,7 @@ export default function ClipsNouveau() {
         </div>
       </div>
       <div className="row mt-4">
-        <div className="col-4">
+        <div className="col-12 mt-2">
           <p>Image du clip</p>
           <ImageUpload
             image={
@@ -97,14 +107,10 @@ export default function ClipsNouveau() {
             loading={values.image.loading}
           />
         </div>
-        <div className="col-8">
+        <div className="col-12 mt-2">
           <p>Video du clip</p>
           <VideoUpload
-            video={
-              values.video.path
-                ? `${assetsLocations.videos}/${values.video.path}`
-                : ""
-            }
+            video={values.video.path}
             setLoad={setLoading}
             setVideo={setVideo}
             loading={values.video.loading}

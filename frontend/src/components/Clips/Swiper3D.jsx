@@ -79,9 +79,7 @@ export default function SwiperCoverflow() {
               content={{
                 type: "video",
                 src: clips[lightbox.current]
-                  ? `${assetsLocations.videos}/${
-                      clips[lightbox.current].video.path
-                    }`
+                  ? `${clips[lightbox.current].video.path}`
                   : "",
               }}
             />
@@ -102,6 +100,7 @@ export default function SwiperCoverflow() {
             slidesPerView={1}
             centeredSlides
             loop={true}
+            autoPlay
             autoplay={{
               delay: 1000,
               disableOnInteraction: true,
@@ -135,7 +134,6 @@ export default function SwiperCoverflow() {
 
           <Swiper
             className="d-none d-md-block"
-            navigation
             pagination={{ clickable: true }}
             effect="coverflow"
             coverflowEffect={{
@@ -149,10 +147,10 @@ export default function SwiperCoverflow() {
             slidesPerView={4}
             centeredSlides
             loop={true}
-            // autoplay={{
-            //   delay: 1000,
-            //   disableOnInteraction: true,
-            // }}
+            autoplay={{
+              delay: 1000,
+              disableOnInteraction: true,
+            }}
           >
             {clips.map((clip, index) => {
               return (
