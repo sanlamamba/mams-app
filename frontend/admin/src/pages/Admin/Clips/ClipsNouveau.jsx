@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import ImageUpload from "../../../components/general/ImageUpload";
 import { assetsLocations } from "../../../utils/assetsLocations";
 import VideoUpload from "../../../components/general/VideoUpload";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import client from "../../../apiConfig/api";
 
 export default function ClipsNouveau() {
   const [loader, setLoader] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [values, setValues] = useState({
     video: {
       path: "",
@@ -37,15 +37,15 @@ export default function ClipsNouveau() {
       },
     });
   };
-  const setVideoInput = (path) => {
-    setValues({
-      ...values,
-      video: {
-        path: path,
-        loading: false,
-      },
-    });
-  };
+  // const setVideoInput = (path) => {
+  //   setValues({
+  //     ...values,
+  //     video: {
+  //       path: path,
+  //       loading: false,
+  //     },
+  //   });
+  // };
   const setVideo = (path) => {
     setValues({
       ...values,
