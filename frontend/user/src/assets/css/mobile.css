@@ -1,0 +1,153 @@
+
+
+@media only screen and (min-width: 600px) {
+     .navbar-nav .nav-toggle{
+          display: none;
+     }
+}
+@media only screen and (max-width: 600px) {
+     .navbar{
+          width: 100vw;
+     }
+     .navbar-nav{
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 10;
+          background-color: #000000ca;
+          height: 100vh;
+          width: 100vw;
+          transform: translateX(100%);
+          transition: 0.5s;
+
+     }
+     .navbar-nav.toggled{
+          transform: translateX(0);
+     }
+     .nav-item{
+          margin-bottom: 10px
+     }
+     .nav-item.active{
+          border-bottom: 1px solid #fafafa10;
+     }
+     .navbar-nav img{
+          top: 0;
+          right: 50%;
+     }
+     .navbar-nav .nav-toggle{
+          display: flex;
+          justify-content: end;
+          padding: 20px;
+     }
+     .input__container input, .input__container textarea{
+          width: 100%;
+          border-radius: 0;
+          text-align: start;
+     }
+     .input__container{
+          margin: 1em 0px;
+     }
+     .galerie_grid{
+          grid-template-columns: 1fr 1fr;
+     }
+     .lightbox-content{
+          transform: scale(0.8);
+     }
+     .projectbox__container{
+          margin: 0.2em;
+     }
+     .projectbox__container .projet_img{
+          margin: 0;
+          transform: scale(1);
+          margin-bottom: 0.2em;
+     }
+     .music__list_container{
+          padding: 0;
+          gap: 10px;
+     }
+     .lightbox-content iframe{
+          max-width: 99vw;
+     }
+     .lightbox-img.galerie_img{
+          width: 100%;
+     }
+     .lightbox-content img{
+          width: 100%;
+     }
+     .galerie-lightbox-nav{
+          width: 120%;
+     }
+     .galerie-lightbox-close{
+          margin-top: -30px;
+          right: 0;
+     }
+     .galerie-lightbox-nav img{
+          width: 30px;
+     }
+     .plus_mark{
+          width: 33%;
+     }
+     .background-main{
+          max-width: none;
+          max-width: 300vw;
+          width: auto;
+          object-fit: cover;
+
+     }
+     .music__list_container{
+          grid-template-columns: 1fr;
+     }
+     .popup_image{
+          border-right: 0;
+          border-bottom: 2px solid white;
+          margin-bottom: 1em !important;
+          transform: scale(0.9);
+     }
+     .popup_separator{
+          display: none;
+     }
+    
+     .popup{
+          padding: 1em 1em 1.5em;
+          margin: 0px 1em;
+     }
+  
+     
+     .projet__container{
+          min-height: 87.5vh !important;
+          margin-bottom: 0;
+          padding-top : 0px;
+     }
+     .projet__container *{
+          z-index: 5;
+     }
+     .project__disc_container{
+          position: absolute;
+          height: 100vh;
+          width: 100vw;
+          top: 0;
+          left: 0;
+          overflow: visible;
+          z-index: 2 !important;
+
+     }
+     .projet__disc_mobile{
+          position: absolute;
+          bottom: -150px;
+          z-index: 2;
+     }
+
+     .contact__img{
+          position: absolute;
+          height: 100vh;
+          z-index: 1;
+     }
+     .form__container{
+          z-index: 2;
+     }
+     .contact__img img{
+          height: 30vh;
+          position: absolute;
+          bottom: 0;
+     }
+   }
