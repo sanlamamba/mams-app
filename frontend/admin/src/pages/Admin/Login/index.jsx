@@ -24,7 +24,7 @@ export default function Index() {
       });
     }
     if (token) {
-      navigate("/admin/profile");
+      navigate("/profile");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);

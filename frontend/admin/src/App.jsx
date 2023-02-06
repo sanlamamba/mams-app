@@ -1,11 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import UserLayout from "./layout/UserLayout";
-import Projet from "./pages/UserPage/Projet";
-import Contact from "./pages/UserPage/Contact";
-import Galerie from "./pages/UserPage/Galerie";
-import Clips from "./pages/UserPage/Clips";
+
 import Login from "./pages/Admin/Login";
 import AdminLayout from "./layout/AdminLayout";
 import GalerieNew from "./pages/Admin/Galerie/GalerieNew";
@@ -29,7 +25,8 @@ function App() {
   return (
     <div id="App">
       <Routes>
-        <Route
+        <Route path="*" element={<Login />} />
+        {/* <Route
           path="*"
           element={
             <UserLayout>
@@ -40,43 +37,10 @@ function App() {
               />
             </UserLayout>
           }
-        />
-        <Route
-          path="/projet"
-          element={
-            <UserLayout>
-              <Projet />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/galerie"
-          element={
-            <UserLayout>
-              <Galerie />
-            </UserLayout>
-          }
-        />
-        <Route
-          path="/clips"
-          element={
-            <UserLayout>
-              <Clips />
-            </UserLayout>
-          }
-        />
+        /> */}
 
         <Route
-          path="/contact"
-          element={
-            <UserLayout>
-              <Contact />
-            </UserLayout>
-          }
-        />
-        <Route path="/admin" element={<Login />} />
-        <Route
-          path="/admin/profile"
+          path="/profile"
           element={
             <AdminLayout>
               <h1>Mams App</h1>
@@ -85,7 +49,7 @@ function App() {
         />
 
         <Route
-          path="/admin/galerie/"
+          path="/galerie/"
           element={
             <AdminLayout>
               <GalerieNew />
@@ -93,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/message/"
+          path="/message/"
           element={
             <AdminLayout>
               <MessageList />
@@ -101,7 +65,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/clips/"
+          path="/clips/"
           element={
             <AdminLayout>
               <ClipsList />
@@ -109,7 +73,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/clips/nouveau"
+          path="/clips/nouveau"
           element={
             <AdminLayout>
               <ClipsNouveau />
@@ -117,7 +81,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/clips/:id"
+          path="/clips/:id"
           element={
             <AdminLayout>
               <ClipEdit />
@@ -125,7 +89,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/projet/"
+          path="/projet/"
           element={
             <AdminLayout>
               <MusicList />
@@ -133,7 +97,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/projet/nouveau"
+          path="/projet/nouveau"
           element={
             <AdminLayout>
               <NewMusic />
@@ -141,7 +105,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/projet/:id"
+          path="/projet/:id"
           element={
             <AdminLayout>
               <EditMusic />

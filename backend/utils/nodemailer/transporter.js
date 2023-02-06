@@ -2,10 +2,10 @@ const nodemailer = require("nodemailer");
 // create reusable transporter object using the default SMTP transport
 const transporter = nodemailer.createTransport({
   port: 465,
-  host: "mail.fam-digitale.com",
+  host: "smtp.ionos.fr",
   auth: {
-    user: "lamamba@fam-digitale.com",
-    pass: "Geneses4567!",
+    user: "contact@nhqlv.fr",
+    pass: "Mams67@@",
   },
   secure: true,
 });

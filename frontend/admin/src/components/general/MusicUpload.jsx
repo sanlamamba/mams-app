@@ -7,6 +7,7 @@ import { message, Upload } from "antd";
 import client from "../../apiConfig/api";
 import { toast } from "react-toastify";
 import { assetsLocations } from "../../utils/assetsLocations";
+import { useState } from "react";
 
 // const getBase64 = (img, callback) => {
 //   const reader = new FileReader();
@@ -23,14 +24,21 @@ const beforeUpload = (file) => {
 };
 
 const MusicUpload = ({ music, setMusic, setLoad, loading }) => {
+  const [uploadProgress, setUploadProgress] = useState(0);
+
   const handleDelete = async () => {
     const filename = music.split("/")[music.split("/").length - 1];
-
     const data = {
       music: filename,
     };
     try {
-      const apiCall = await client.delete(`/music/delete-music/`, data);
+      const apiCall = await client.delete(`/music/delete-music/`, data, {
+        uploadProgress: (progressEvent) => {
+          setUploadProgress(
+            Math.round((progressEvent.loaded * 100) / progressEvent.total)
+          );
+        },
+      });
 
       if (apiCall.ok) {
         setMusic("");
@@ -39,6 +47,7 @@ const MusicUpload = ({ music, setMusic, setLoad, loading }) => {
       console.log(err);
     }
   };
+  console.log(uploadProgress);
   const handleChange = async (info) => {
     setLoad();
     const data = new FormData();

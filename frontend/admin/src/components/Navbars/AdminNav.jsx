@@ -50,7 +50,7 @@ export default function AdminNav() {
           <li
             className={`nav-item p-2 my-1 admin__nav ${isActivePage("projet")}`}
           >
-            <Link to="/admin/projet" className="navbar-brand fs-6">
+            <Link to="/projet" className="navbar-brand fs-6">
               Projet
             </Link>
           </li>
@@ -59,14 +59,14 @@ export default function AdminNav() {
               "galerie"
             )}`}
           >
-            <Link to="/admin/galerie" className="navbar-brand fs-6">
+            <Link to="/galerie" className="navbar-brand fs-6">
               Galerie
             </Link>
           </li>
           <li
             className={`nav-item p-2 my-1 admin__nav ${isActivePage("clips")}`}
           >
-            <Link to="/admin/clips" className="navbar-brand fs-6">
+            <Link to="/clips" className="navbar-brand fs-6">
               Clips
             </Link>
           </li>
@@ -75,7 +75,7 @@ export default function AdminNav() {
               "messages"
             )}`}
           >
-            <Link to="/admin/message" className="navbar-brand fs-6">
+            <Link to="/message" className="navbar-brand fs-6">
               Messages
               {unreadMessagesCount > 0 && (
                 <Badge count={unreadMessagesCount ? unreadMessagesCount : 0} />

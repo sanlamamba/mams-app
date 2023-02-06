@@ -81,7 +81,7 @@ export default function ClipEdit() {
       const apiCall = await client.put(`/clip/${id}`, values);
       if (apiCall.ok) {
         toast.success("Clip Enregistré");
-        navigate("/admin/clips");
+        navigate("/clips");
       }
     } catch (err) {
       toast.error("Une erreur est survenue");
@@ -97,11 +97,7 @@ export default function ClipEdit() {
       <div className="row ">
         <h3 className="col">Modifier le clip</h3>
         <div className="col d-flex justify-content-end">
-          <Link
-            to="/admin/clips"
-            type="button"
-            className="btn btn-outline-danger"
-          >
+          <Link to="/clips" type="button" className="btn btn-outline-danger">
             Liste des clips
           </Link>
         </div>

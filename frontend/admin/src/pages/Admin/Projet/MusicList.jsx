@@ -7,7 +7,7 @@ export default function MusicList() {
     <div className="container">
       <div className="row mb-2">
         <div className="col d-flex justify-content-end">
-          <Link to={"/admin/projet/nouveau"} className="btn btn-outline-danger">
+          <Link to={"/projet/nouveau"} className="btn btn-outline-danger">
             Ajouter une musique
           </Link>
         </div>

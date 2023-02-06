@@ -42,7 +42,7 @@ export default function ClipsList() {
       <div className="row">
         <div className="col my-2 d-flex justify-content-end">
           <Link
-            to={"/admin/clips/nouveau"}
+            to={"/clips/nouveau"}
             type="button"
             className="btn btn-outline-danger"
           >
@@ -89,7 +89,7 @@ function ClipBox({ video, image, id, requestDelete }) {
               }}
             />
           </button>
-          <Link to={`/admin/clips/${id}`} className="admin__btn">
+          <Link to={`/clips/${id}`} className="admin__btn">
             <EditOutlined
               style={{
                 fontSize: "18px",
