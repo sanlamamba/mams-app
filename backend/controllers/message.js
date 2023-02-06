@@ -16,7 +16,7 @@ const newMessage = async (req, res, next) => {
 
   const mailSent = await transporter.sendMail({
     from: req.body.mail,
-    to: "test@sanlamamba.com",
+    to: "contact@nhqlv.fr",
     subject: req.body.sujet,
     text: "Nouveau Message",
     html: output1,

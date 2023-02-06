@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import ImageUpload from "../../../components/general/ImageUpload";
 import { assetsLocations } from "../../../utils/assetsLocations";
 import VideoUpload from "../../../components/general/VideoUpload";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import client from "../../../apiConfig/api";
 
 export default function ClipsNouveau() {
   const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     video: {
       path: "",
@@ -61,6 +62,7 @@ export default function ClipsNouveau() {
       const apiCall = await client.post("/clip/new", values);
       if (apiCall.ok) {
         toast.success("Clip Enregistré");
+
         setValues({
           video: {
             path: "",
@@ -84,11 +86,7 @@ export default function ClipsNouveau() {
       <div className="row ">
         <h3 className="col">Ajouter un nouveau Clip</h3>
         <div className="col d-flex justify-content-end">
-          <Link
-            to="/admin/clips"
-            type="button"
-            className="btn btn-outline-danger"
-          >
+          <Link to="/clips" type="button" className="btn btn-outline-danger">
             Liste des clips
           </Link>
         </div>
